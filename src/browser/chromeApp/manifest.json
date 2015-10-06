@@ -14,5 +14,5 @@
       "page": "background.html"
     }
   },
-  "permissions": [ "contextMenus", "storage", "https://github.com/*" ]
+  "permissions": [ "storage" ]
 }
