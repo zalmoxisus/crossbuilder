@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "name": "browser-app",
+  "manifest_version": 2,
+  "description": "Redux counter example",
+  "icons": {
+    "16": "img/logo/16x16.png",
+    "48": "img/logo/48x48.png",
+    "128": "img/logo/128x128.png",
+    "scalable": "img/logo/scalable.ico"
+  },
+  "app": {
+    "background": {
+      "page": "background.html"
+    }
+  },
+  "permissions": [ "contextMenus", "storage", "https://github.com/*" ]
+}
