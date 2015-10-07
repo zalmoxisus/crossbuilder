@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { persistStore, autoRehydrate } from 'redux-persist'
-import crosstabSync from 'redux-persist-crosstab'
+import { persistStore, autoRehydrate } from 'redux-persist';
+import sync from 'browser-redux-sync';
+import storage from './storage';
 import reducers from '../reducers';
 import rehydrateAction from '../actions/rehydrateAction';
 
@@ -11,9 +12,9 @@ const middleware = __DEVELOPMENT__ ?
 const finalCreateStore = compose(applyMiddleware(...middleware),autoRehydrate())(createStore);
 
 export default function configureStore(initialState, isFromBackground) {
-  console.warn('isFromBackground',isFromBackground);
-  var store = finalCreateStore(reducers);
-  const persistor = persistStore(store, isFromBackground ? { rehydrateAction: rehydrateAction(store) } : {});
-  crosstabSync(persistor);
+  let store = finalCreateStore(reducers);
+  const config = isFromBackground ? { rehydrateAction: rehydrateAction(store) } : {};
+  const persistor = persistStore(store, { ...config, storage:storage });
+  sync(persistor);
   return store;
 }
