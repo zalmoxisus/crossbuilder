@@ -11,11 +11,11 @@ class Counter extends Component {
         <button onClick={increment}>+</button>
         {' '}
         <button onClick={decrement}>-</button>
-        {' '}
+        <br />
         <button onClick={incrementIfOdd}>Increment if odd</button>
-        {' '}
+        <br />
         <button onClick={() => incrementAsync()}>Increment async</button>
-        {' '}
+        <br />
         <button onClick={() => incrementBG()}>Increment in background</button>
       </p>
     );
