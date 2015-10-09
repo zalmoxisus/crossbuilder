@@ -11,10 +11,10 @@ const middleware = __DEVELOPMENT__ ?
   [thunk];
 const finalCreateStore = compose(applyMiddleware(...middleware),autoRehydrate())(createStore);
 
-export default function configureStore(initialState, isFromBackground) {
+export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(reducers);
   const config = isFromBackground ? { rehydrateAction: rehydrateAction(store) } : {};
-  const persistor = persistStore(store, { ...config, storage:storage });
+  const persistor = persistStore(store, { ...config, storage:storage }, callback);
   sync(persistor);
   return store;
 }

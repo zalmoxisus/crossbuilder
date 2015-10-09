@@ -1,26 +1,5 @@
 import configureStore from '../../../app/store/configureStore';
-
 const store = configureStore({counter: {count: 0}}, true);
-
-// Message listener
-
-chrome.runtime.onMessage.addListener(
-  function (req, sender, sendResponse) {
-
-    // Update state
-    if (req.action === 'updateState') {
-      store.dispatch({
-        type: req.type,
-        state: req.state
-      });
-    }
-
-    // Send current state
-    if (req.action === 'getState') {
-      sendResponse(store.getState());
-    }
-
-  });
 
 // Badge
 
