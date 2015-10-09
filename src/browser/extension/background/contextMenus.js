@@ -1,36 +1,45 @@
-let windowId = 0;
-const CONTEXT_MENU_ID = 'example_context_menu';
+let windows = {app: 0};
 
-function closeIfExist() {
-  if (windowId > 0) {
-    chrome.windows.remove(windowId);
-    windowId = chrome.windows.WINDOW_ID_NONE;
-  }
+const MENU_APP = 'MENU_APP';
+
+function createMenu(store) {
+  addToMenu(MENU_APP, 'Redux counter app', ['all']);
+
+  chrome.contextMenus.onClicked.addListener((event) => {
+    switch (event.menuItemId) {
+      case MENU_APP: popWindow('open', 'window.html', 'app'); break;
+    }
+  });
 }
 
-function popWindow(type) {
-  closeIfExist();
+function addToMenu(id, title, contexts) {
+  chrome.contextMenus.create({
+    id: id,
+    title: title,
+    contexts: contexts
+  });
+}
+
+function popWindow(action, url, type) {
+  closeIfExist(type);
   let options = {
     type: 'popup',
     left: 100, top: 100,
     width: 800, height: 475
   };
-  if (type === 'open') {
-    options.url = 'window.html';
+  if (action === 'open') {
+    options.url = url;
     chrome.windows.create(options, (win) => {
-      windowId = win.id;
+      windows[type] = win.id;
     });
   }
 }
 
-chrome.contextMenus.create({
-  id: CONTEXT_MENU_ID,
-  title: 'Redux counter app',
-  contexts: ['all']
-});
-
-chrome.contextMenus.onClicked.addListener((event) => {
-  if (event.menuItemId === CONTEXT_MENU_ID) {
-    popWindow('open');
+function closeIfExist(type) {
+  if (windows[type] > 0) {
+    chrome.windows.remove(windows[type]);
+    windows[type] = chrome.windows.WINDOW_ID_NONE;
   }
-});
+}
+
+export default createMenu;
