@@ -1,11 +1,22 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import Root from '../../../app/containers/Root';
 import configureStore from '../../../app/store/configureStore';
 
-const store = configureStore({counter: {count: 0}}, false, () => injectContent(store.getState()));
+const store = configureStore();
 
-const injectContent = (state) => {
+window.addEventListener('load', () => {
   let injectDiv = document.createElement('div');
-  injectDiv.style.width = '100px'; injectDiv.style.margin = '5px auto'; injectDiv.style.backgroundColor = 'red'; injectDiv.style.color = 'white'; injectDiv.style.textAlign = 'center';  injectDiv.style.cursor = 'pointer';
-  injectDiv.innerText = 'Clicked: ' + state.counter.count;
-  injectDiv.addEventListener("click",  function() { injectDiv.parentNode.removeChild(injectDiv); injectContent(store.getState()); });
+  injectDiv.style.margin = '0 auto';
+  injectDiv.style.width = '200px';
+  injectDiv.style.border = '1px solid #ccc';
+  injectDiv.style.textAlign = 'center';
   document.body.appendChild(injectDiv);
-};
+
+  React.render(
+    <Provider store={store}>
+      {() => <Root />}
+    </Provider>,
+    injectDiv
+  );
+});
