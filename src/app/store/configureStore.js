@@ -21,7 +21,7 @@ if (__DEVELOPMENT__) {
 }
 else {
    finalCreateStore = compose(
-    applyMiddleware([thunk]),
+    applyMiddleware(thunk),
     autoRehydrate()
   )(createStore);
 }

@@ -11,9 +11,17 @@ React.render(
     <Provider store={store}>
       {() => <Root />}
     </Provider>
-    <DebugPanel top right bottom>
-      <DevTools store={store} monitor={LogMonitor} />
-    </DebugPanel>
+    {
+      (() => {
+        if (__DEVELOPMENT__) {
+          return (
+            <DebugPanel top right bottom>
+              <DevTools store={store} monitor={LogMonitor} />
+            </DebugPanel>
+          );
+        }
+      })()
+    }
   </div>,
   document.getElementById('root')
 );
