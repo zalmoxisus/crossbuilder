@@ -6,10 +6,25 @@ import storage from './storage';
 import reducers from '../reducers';
 import rehydrateAction from '../actions/rehydrateAction';
 
-const middleware = __DEVELOPMENT__ ?
-  [require('redux-logger')({ level: 'info', collapsed: true }), require('redux-immutable-state-invariant')(), thunk] :
-  [thunk];
-const finalCreateStore = compose(applyMiddleware(...middleware),autoRehydrate())(createStore);
+let finalCreateStore;
+if (__DEVELOPMENT__) {
+  const middleware = [
+    require('redux-logger')({ level: 'info', collapsed: true }),
+    require('redux-immutable-state-invariant')(),
+    thunk
+  ];
+   finalCreateStore = compose(
+    applyMiddleware(...middleware),
+    autoRehydrate(),
+    require('redux-devtools').devTools()
+  )(createStore);
+}
+else {
+   finalCreateStore = compose(
+    applyMiddleware([thunk]),
+    autoRehydrate()
+  )(createStore);
+}
 
 export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(reducers);

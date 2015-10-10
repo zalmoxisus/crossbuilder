@@ -88,7 +88,10 @@ gulp.task('webpack:build:app', (callback) => {
 });
 
 gulp.task('views:build:extension', () => {
-  gulp.src('./src/browser/views/*.jade')
+  gulp.src([
+      './src/browser/views/*.jade',
+      '!./src/browser/views/devtools.jade'
+    ])
     .pipe(jade({
       locals: { env: 'prod' }
     }))
@@ -96,7 +99,10 @@ gulp.task('views:build:extension', () => {
 });
 
 gulp.task('views:build:app', () => {
-  gulp.src('./src/browser/views/*.jade')
+  gulp.src([
+    './src/browser/views/*.jade',
+    '!./src/browser/views/devtools.jade'
+  ])
     .pipe(jade({
       locals: { env: 'prod' }
     }))

@@ -52,6 +52,8 @@
     "react-transform-catch-errors": "^0.1.1",
     "react-transform-webpack-hmr": "^0.1.1",
     "redbox-react": "^1.0.1",
+    "redux-devtools": "^2.1.5",
+    "redux-immutable-state-invariant": "^1.1.0",
     "redux-logger": "^1.0.8",
     "sinon-chrome": "^0.2.1",
     "style-loader": "^0.12.3",
@@ -63,7 +65,6 @@
     "react": "^0.13.3",
     "react-redux": "^3.0.1",
     "redux": "^3.0.2",
-    "redux-immutable-state-invariant": "^1.1.0",
     "redux-persist": "^1.0.0",
     "redux-thunk": "^1.0.0"
   }

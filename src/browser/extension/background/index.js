@@ -6,3 +6,5 @@ import './inject';
 const store = configureStore({counter: {count: 0}}, true);
 createMenu(store);
 createBadge(store);
+
+if (__DEVELOPMENT__) window.store = store;

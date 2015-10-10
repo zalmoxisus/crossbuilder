@@ -1,13 +1,19 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import Root from '../../app/containers/Root';
 import configureStore from '../../app/store/configureStore';
 
 const store = configureStore();
 
 React.render(
-  <Provider store={store}>
-    {() => <Root />}
-  </Provider>,
+  <div>
+    <Provider store={store}>
+      {() => <Root />}
+    </Provider>
+    <DebugPanel top right bottom>
+      <DevTools store={store} monitor={LogMonitor} />
+    </DebugPanel>
+  </div>,
   document.getElementById('root')
 );
