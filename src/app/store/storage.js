@@ -1,5 +1,7 @@
 let storage = chrome.storage.local;
 
+storage._lastData = ''; // Deal with Chrome issue https://code.google.com/p/chromium/issues/detail?id=361113
+
 storage.getItem = (key, callback) => {
   chrome.storage.local.get(key, obj => {
     if (obj[key]) callback(null, obj[key]);
@@ -13,6 +15,7 @@ storage.setItem = (key, value, callback) => {
   chrome.storage.local.set(obj, () => {
     if (chrome.runtime.lastError) callback(key);
   });
+  storage._lastData = value;
 };
 
 storage.removeItem = storage.remove;
