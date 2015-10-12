@@ -1,6 +1,6 @@
 # Browser App and Extension Boilerplate using Redux Actions
 
-Simple boilerplate and library for building Chrome apps and cross-browser extensions (support for Firefox and Safari will come later) that use Redux actions instead of messaging. 
+Simple boilerplate and library for building Chrome apps and cross-browser extensions (support for Firefox and Safari will come later) that use Redux actions instead of messaging.
 
 ![Demo](demo.gif)
 
@@ -21,7 +21,7 @@ The app example is edited from [Redux Counter example](https://github.com/rackt/
  - [redbox-react](https://github.com/KeywordBrain/redbox-react)
  - [react-chrome-extension-boilerplate](https://github.com/jhen0409/react-chrome-extension-boilerplate)
  - [webpack](https://github.com/webpack/webpack)
- - [react-transform-webpack-hmr](https://github.com/gaearon/react-transform-webpack-hmr)
+ - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
  - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
  - [babel](https://github.com/babel/babel)
  - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
