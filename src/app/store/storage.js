@@ -1,6 +1,6 @@
 let storage = chrome.storage.local;
 
-storage._lastData = ''; // Deal with Chrome issue https://code.google.com/p/chromium/issues/detail?id=361113
+storage._lastData = null; // Deal with Chrome issue https://code.google.com/p/chromium/issues/detail?id=361113
 
 storage.getItem = (key, callback) => {
   chrome.storage.local.get(key, obj => {

@@ -29,7 +29,7 @@ else {
 export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(reducers);
   const config = isFromBackground ? { rehydrateAction: rehydrateAction(store) } : {};
-  const persistor = persistStore(store, { ...config, storage:storage }, callback);
+  const persistor = persistStore(store, { ...config, storage:storage, serialize: data => data, deserialize: data => data }, callback);
   sync(persistor);
   return store;
 }
