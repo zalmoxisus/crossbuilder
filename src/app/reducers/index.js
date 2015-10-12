@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import extension from './commands';
 import counter from './counter';
 
-const rootReducer = combineReducers({
-  extension,
-  counter
-});
+const rootReducer = isFromBackground => {
+  const reducers = {
+    counter
+  };
+  const extension = isFromBackground ? require('./commands/receive') : require('./commands/send');
+  return combineReducers({ ...reducers, extension });
+};
 
 export default rootReducer;

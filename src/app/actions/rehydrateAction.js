@@ -3,7 +3,7 @@ import { increment } from './counter';
 
 const rehydrateAction = (store) => {
   return (key, data) => {
-    if (key === 'extension') {
+    if (key === 'extension' && data.status === 'sent') {
       console.warn('key', key, data);
       store.dispatch(increment());
     }
