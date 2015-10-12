@@ -1,11 +1,11 @@
-import { REHYDRATE } from 'redux-persist/constants'
-import { increment } from './counter';
+import { REHYDRATE } from 'redux-persist/constants';
+import * as actions from './counter';
 
 const rehydrateAction = (store) => {
   return (key, data) => {
     if (key === 'extension' && data.status === 'sent') {
       console.warn('key', key, data);
-      store.dispatch(increment());
+      store.dispatch(actions[data.fN]());
     }
 
     return {

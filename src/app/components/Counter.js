@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class Counter extends Component {
   render() {
-    const { increment, incrementIfOdd, incrementAsync, incrementBG, decrement, state } = this.props;
+    const { increment, incrementIfOdd, incrementAsync, bg, decrement, state } = this.props;
     console.log('%cRender ' + this.constructor.displayName + ' component', 'background: #FFF; color: #2aa198 ', 'state', this.state, 'props', this.props);
     return (
       <p>
@@ -16,7 +16,7 @@ class Counter extends Component {
         <br />
         <button onClick={() => incrementAsync()}>Increment async</button>
         <br />
-        <button onClick={() => incrementBG()}>Increment in background</button>
+        <button onClick={() => bg('increment')}>Increment in background</button>
       </p>
     );
   }
@@ -26,7 +26,7 @@ Counter.propTypes = {
   increment: PropTypes.func.isRequired,
   incrementIfOdd: PropTypes.func.isRequired,
   incrementAsync: PropTypes.func.isRequired,
-  incrementBG: PropTypes.func.isRequired,
+  bg: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired
 };
