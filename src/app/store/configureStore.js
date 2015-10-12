@@ -4,7 +4,7 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import sync from 'browser-redux-sync';
 import storage from './storage';
 import rootReducer from '../reducers';
-import rehydrateAction from '../actions/rehydrateAction';
+import rehydrateAction from '../actions/bg/receive';
 
 let finalCreateStore;
 if (__DEVELOPMENT__) {

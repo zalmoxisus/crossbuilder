@@ -1,4 +1,4 @@
-import { CALL_IN_BG } from '../constants/ActionTypes';
+import { CALL_IN_BG } from '../../constants/ActionTypes';
 
 /**
  * Send an action to be called in background script by its function name.
