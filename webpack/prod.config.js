@@ -1,8 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 
-process.env.BABEL_ENV = 'production';
-
 export default {
   entry: {
     background: [ path.join(__dirname, '../src/browser/extension/background/index') ],
