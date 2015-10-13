@@ -20,7 +20,7 @@ export default {
     path: path.join(__dirname, '../dev/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js',
-    publicPath: 'http://localhost:${port}/js/'
+    publicPath: `http://localhost:${port}/js/`
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
