@@ -21,7 +21,9 @@ storage.setItem = (key, value, callback) => {
 storage.removeItem = storage.remove;
 
 storage.getAllKeys = callback => {
-  // Do not need this, use storage.clear() for purgeAll instead
+  chrome.storage.local.get(null, obj => {
+    callback(null, Object.keys(obj));
+  });
 };
 
 export default storage;
