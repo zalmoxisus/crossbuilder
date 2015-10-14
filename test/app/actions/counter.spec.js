@@ -45,31 +45,31 @@ function mockStore(getState, expectedActions, onLastAction) {
 
 describe('actions', () => {
   it('increment should create increment action', () => {
-    expect(actions.increment()).toEqual({ type: actions.INCREMENT_COUNTER });
+    expect(actions.increment()).toEqual({ type: INCREMENT_COUNTER });
   });
 
   it('decrement should create decrement action', () => {
-    expect(actions.decrement()).toEqual({ type: actions.DECREMENT_COUNTER });
+    expect(actions.decrement()).toEqual({ type: DECREMENT_COUNTER });
   });
 
   it('incrementIfOdd should create increment action', (done) => {
     const expectedActions = [
-      { type: actions.INCREMENT_COUNTER }
+      { type: INCREMENT_COUNTER }
     ];
-    const store = mockStore({ counter: 1 }, expectedActions, done);
+    const store = mockStore({ counter: { count: 1 } }, expectedActions, done);
     store.dispatch(actions.incrementIfOdd());
   });
 
   it('incrementIfOdd shouldnt create increment action if counter is even', (done) => {
     const expectedActions = [];
-    const store = mockStore({ counter: 2 }, expectedActions);
+    const store = mockStore({ counter: { count: 2 } }, expectedActions);
     store.dispatch(actions.incrementIfOdd());
     done();
   });
 
   it('incrementAsync should create increment action', (done) => {
     const expectedActions = [
-      { type: actions.INCREMENT_COUNTER }
+      { type: INCREMENT_COUNTER }
     ];
     const store = mockStore({ counter: 0 }, expectedActions, done);
     store.dispatch(actions.incrementAsync(100));
