@@ -3,8 +3,10 @@ import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import sync from 'browser-redux-sync';
 import storage from './storage';
-import rootReducer from '../reducers';
-import rehydrateAction from '../actions/bg/receive';
+import * as reducers from '../reducers';
+import * as actions from '../actions/counter';
+import bgConfig from 'browser-redux-bg/lib/configure';
+import combineReducers from 'browser-redux-bg/lib/reducers';
 
 let finalCreateStore;
 if (__DEVELOPMENT__) {
@@ -26,10 +28,9 @@ if (__DEVELOPMENT__) {
 }
 
 export default function configureStore(initialState, isFromBackground, callback) {
-  let store = finalCreateStore(rootReducer(isFromBackground));
-  const config = isFromBackground ? {rehydrateAction: rehydrateAction(store)} : {};
+  let store = finalCreateStore(combineReducers(reducers, isFromBackground));
   const persistor = persistStore(store, {
-    ...config,
+    ...bgConfig(store, actions, isFromBackground),
     storage: storage,
     serialize: data => data,
     deserialize: data => data
