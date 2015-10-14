@@ -5,12 +5,12 @@ const MENU_DEVTOOLS = 'MENU_DEVTOOLS';
 
 function createMenu(store) {
   addToMenu(MENU_APP, 'Redux Counter App', ['all']);
-  addToMenu(MENU_DEVTOOLS, 'Background Redux DevTools', ['all']);
+  if (__DEVELOPMENT__) addToMenu(MENU_DEVTOOLS, 'Background Redux DevTools', ['all']);
 
   chrome.contextMenus.onClicked.addListener((event) => {
-    switch (event.menuItemId) {
-      case MENU_APP: popWindow('open', 'window.html', 'app', {left: 0, width: 1080}); break;
-      case MENU_DEVTOOLS: popWindow('open', 'devtools.html', 'devtools', {left: 1100, width: 320}, store); break;
+    if (event.menuItemId === MENU_APP) return popWindow('open', 'window.html', 'app', {left: 0, width: 1080});
+    if (__DEVELOPMENT__) {
+      if (event.menuItemId === MENU_DEVTOOLS) return popWindow('open', 'devtools.html', 'devtools', {left: 1100, width: 320}, store);
     }
   });
 }
