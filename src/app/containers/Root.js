@@ -8,7 +8,7 @@ import * as commandsActions from '../actions/bg/send';
 function mapStateToProps(state) {
   return {
     state: state
-  }
+  };
 }
 
 const mapDispatchToProps = { ...counterActions, ...commandsActions};

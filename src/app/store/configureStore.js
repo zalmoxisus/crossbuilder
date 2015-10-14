@@ -9,18 +9,17 @@ import rehydrateAction from '../actions/bg/receive';
 let finalCreateStore;
 if (__DEVELOPMENT__) {
   const middleware = [
-    require('redux-logger')({ level: 'info', collapsed: true }),
+    require('redux-logger')({level: 'info', collapsed: true}),
     require('redux-immutable-state-invariant')(),
     thunk
   ];
-   finalCreateStore = compose(
+  finalCreateStore = compose(
     applyMiddleware(...middleware),
     autoRehydrate(),
     require('redux-devtools').devTools()
   )(createStore);
-}
-else {
-   finalCreateStore = compose(
+} else {
+  finalCreateStore = compose(
     applyMiddleware(thunk),
     autoRehydrate()
   )(createStore);
@@ -28,8 +27,13 @@ else {
 
 export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(rootReducer(isFromBackground));
-  const config = isFromBackground ? { rehydrateAction: rehydrateAction(store) } : {};
-  const persistor = persistStore(store, { ...config, storage:storage, serialize: data => data, deserialize: data => data }, callback);
+  const config = isFromBackground ? {rehydrateAction: rehydrateAction(store)} : {};
+  const persistor = persistStore(store, {
+    ...config,
+    storage: storage,
+    serialize: data => data,
+    deserialize: data => data
+  }, callback);
   sync(persistor);
   return store;
 }

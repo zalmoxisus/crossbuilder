@@ -16,13 +16,13 @@ const port = 3000;
  * common tasks
  */
 gulp.task('replace-webpack-code', () => {
-  const replaceTasks = [ {
+  const replaceTasks = [{
     from: './webpack/replace/JsonpMainTemplate.runtime.js',
     to: './node_modules/webpack/lib/JsonpMainTemplate.runtime.js'
   }, {
     from: './webpack/replace/log-apply-result.js',
     to: './node_modules/webpack/hot/log-apply-result.js'
-  } ];
+  }];
   replaceTasks.forEach(task => fs.writeFileSync(task.to, fs.readFileSync(task.from)));
 });
 
@@ -89,9 +89,9 @@ gulp.task('webpack:build:app', (callback) => {
 
 gulp.task('views:build:extension', () => {
   gulp.src([
-      './src/browser/views/*.jade',
-      '!./src/browser/views/devtools.jade'
-    ])
+    './src/browser/views/*.jade',
+    '!./src/browser/views/devtools.jade'
+  ])
     .pipe(jade({
       locals: { env: 'prod' }
     }))

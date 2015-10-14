@@ -11,7 +11,7 @@ const rehydrateAction = (store) => {
       type: REHYDRATE,
       key: key,
       payload: data
-    }
+    };
   };
 };
 
