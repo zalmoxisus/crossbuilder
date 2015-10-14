@@ -9,7 +9,9 @@
     "compress:extension": "npm run build:extension && gulp compress:extension",
     "compress:app": "npm run build:app && gulp compress:app",
     "clean": "rm -rf build/ && rm -rf dev/",
-    "test": "eslint ."
+    "lint": "eslint .",
+    "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",
+    "test": "npm run test:app"
   },
   "repository": {
     "type": "git",
