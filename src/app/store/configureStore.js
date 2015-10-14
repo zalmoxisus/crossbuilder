@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import sync from 'browser-redux-sync';
 import storage from './storage';
-import * as reducers from '../reducers';
-import * as actions from '../actions/counter';
+import reducers from '../reducers';
+import actions from '../actions';
 import bgConfig from 'browser-redux-bg/lib/configure';
 import combineReducers from 'browser-redux-bg/lib/reducers';
 
