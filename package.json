@@ -11,7 +11,11 @@
     "clean": "rm -rf build/ && rm -rf dev/",
     "lint": "eslint .",
     "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",
-    "test": "npm run test:app"
+    "before:test:chrome": "chromedriver",
+    "test:chrome:extension": "npm run build:extension && mocha --recursive --compilers js:babel-core/register test/extension",
+    "test:chrome:app": "npm run build:app && mocha --recursive --compilers js:babel-core/register test/chromeApp",
+    "test:chrome": "npm run test:chrome:extension && npm run test:chrome:app",
+    "test": "npm run test:app && npm run test:chrome"
   },
   "repository": {
     "type": "git",
@@ -43,6 +47,7 @@
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.1.1",
     "chai": "^3.2.0",
+    "chromedriver": "^2.19.0",
     "eslint": "^1.1.0",
     "eslint-config-airbnb": "0.0.7",
     "eslint-plugin-react": "^3.2.3",
@@ -53,7 +58,6 @@
     "gulp-zip": "^3.0.2",
     "legit-tests": "^0.5.2",
     "mocha": "^2.2.5",
-    "phantomjs": "^1.9.17",
     "raw-loader": "^0.5.1",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
@@ -61,7 +65,7 @@
     "redux-devtools": "^2.1.5",
     "redux-immutable-state-invariant": "^1.1.0",
     "redux-logger": "^1.0.8",
-    "sinon-chrome": "^0.2.1",
+    "selenium-webdriver": "^2.47.0",
     "style-loader": "^0.12.3",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
