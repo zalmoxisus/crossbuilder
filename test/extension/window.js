@@ -2,11 +2,11 @@ import webdriver from 'selenium-webdriver';
 import expect from 'expect';
 import { check, doBefore, doAfter } from '../shared/functions';
 import * as Test from '../shared/tests';
-import { extensionName, appTitle } from '../config';
+import { extensionName, appTitle, injectClassName } from '../config';
 
 let extensionId;
 
-describe('window and popup pages', function() {
+describe('Chrome extension', function() {
 
   before(function(done) {
     doBefore.call(this, done, () => {
@@ -42,8 +42,32 @@ describe('window and popup pages', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(4);
-    Test.clickButtons(4);
+    Test.hasValue(3);
+    Test.clickButtons(3);
+  });
+
+  describe('inject page', function() {
+    this.timeout(5000);
+    it('should open Github', function(done) {
+      this.driver.get('https://github.com').then(() => {
+        this.driver.getTitle().then((title) => {
+          expect(title).toEqual('GitHub · Where software is built');
+          done();
+        });
+      });
+    });
+
+    it('should render inject app', function(done) {
+      this.timeout(8000);
+      this.driver.wait(() =>
+          this.driver.findElements(webdriver.By.className(injectClassName))
+            .then(elems => elems.length > 0)
+        , 7000, 'Inject app not found')
+        .then(() => done());
+    });
+
+    Test.hasValue(5, 'div', injectClassName);
+    Test.clickButtons(5, 'div', injectClassName);
   });
 
 });
