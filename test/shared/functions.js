@@ -19,7 +19,7 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     })
     .forBrowser(browser)
     .build();
-  action().then(done);
+  action().then(() => done());
 }
 
 export function doAfter(done, timeout = 20000) {
