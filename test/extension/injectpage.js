@@ -31,6 +31,7 @@ describe('inject page', function() {
   });
 
   Test.hasValue(0, 'div', injectClassName);
+  Test.clickButtons(0, 'div', injectClassName);
 
 });
 

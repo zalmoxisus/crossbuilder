@@ -42,5 +42,6 @@ describe('Chrome app window', function() {
 
   Test.hasTitle(appTitle);
   Test.hasValue(0);
+  Test.clickButtons(0);
 
 });

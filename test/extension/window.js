@@ -28,6 +28,7 @@ describe('window and popup pages', function() {
   describe('window', function() {
     Test.hasTitle(appTitle);
     Test.hasValue(0);
+    Test.clickButtons(0);
   });
 
   describe('popup', function() {
@@ -41,7 +42,8 @@ describe('window and popup pages', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(0);
+    Test.hasValue(4);
+    Test.clickButtons(4);
   });
 
 });
