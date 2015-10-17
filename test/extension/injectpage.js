@@ -1,8 +1,10 @@
 import webdriver from 'selenium-webdriver';
 import expect from 'expect';
 import { check, doBefore, doAfter } from '../shared/functions';
+import * as Test from '../shared/tests';
+import { injectClassName } from '../config';
 
-describe('inject page (in github.com)', function() {
+describe('inject page', function() {
 
   before(function(done) {
     doBefore.call(this, done, () => {
@@ -22,20 +24,13 @@ describe('inject page (in github.com)', function() {
   it('should render inject app', function(done) {
     this.timeout(8000);
     this.driver.wait(() =>
-        this.driver.findElements(webdriver.By.className('browser-redux'))
+        this.driver.findElements(webdriver.By.className(injectClassName))
           .then(elems => elems.length > 0)
       , 15000, 'Inject app not found')
       .then(() => done());
   });
 
-  it('should contain text "Clicked: 0 times"', function(done) {
-    this.driver
-      .findElements(webdriver.By.xpath(
-        '//div[@class="browser-redux"][//*[contains(text(), "Clicked:")]][//*[contains(text(), "0")]][//*[contains(text(), "times")]]'
-      ))
-      .then((elems) => { expect(elems.length).toBe(1); })
-      .then(() => done());
-  });
+  Test.hasValue(0, 'div', injectClassName);
 
 });
 
