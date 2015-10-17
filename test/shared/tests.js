@@ -11,3 +11,12 @@ export function hasValue(value, container = 'p', className) {
       .then(() => done());
   });
 }
+
+export function hasTitle(value) {
+  it('should have title ' + value, function(done) {
+    this.driver.getTitle().then((title) => {
+      expect(title).toBe(value);
+      done();
+    });
+  });
+}
