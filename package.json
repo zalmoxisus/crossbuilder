@@ -1,6 +1,6 @@
 {
   "name": "browser-redux",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Building Chrome apps and cross-browser extensions with Redux and Webpack.",
   "scripts": {
     "start": "gulp",
@@ -32,7 +32,10 @@
     "webpack",
     "flux",
     "redux",
+    "firefox",
+    "safari",
     "chrome",
+    "app",
     "extension"
   ],
   "authors": [
