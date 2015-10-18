@@ -47,8 +47,8 @@ describe('Chrome extension', function() {
   });
 
   describe('inject page', function() {
-    this.timeout(5000);
     it('should open Github', function(done) {
+      this.timeout(10000);
       this.driver.get('https://github.com').then(() => {
         this.driver.getTitle().then((title) => {
           expect(title).toEqual('GitHub · Where software is built');
