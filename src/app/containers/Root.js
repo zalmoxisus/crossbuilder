@@ -1,9 +1,8 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Counter from '../components/Counter';
 import * as counterActions from '../actions/counter';
-import * as commandsActions from '../actions/bg/send';
+import { bgActions } from 'browser-redux-bg';
 
 function mapStateToProps(state) {
   return {
@@ -11,6 +10,6 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = { ...counterActions, ...commandsActions};
+const mapDispatchToProps = { ...counterActions, ...bgActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
