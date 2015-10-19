@@ -1,11 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist';
-import sync from 'browser-redux-sync';
-import storage from './storage';
+import { sync, storage } from 'browser-redux-sync';
+import { configureBg, combineReducers } from 'browser-redux-bg';
 import reducers from '../reducers';
 import actions from '../actions';
-import { configureBg, combineReducers } from 'browser-redux-bg';
 
 let finalCreateStore;
 if (__DEVELOPMENT__) {
