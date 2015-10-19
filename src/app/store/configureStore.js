@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist';
-import { sync, storage } from 'browser-redux-sync';
+import { configureSync, sync } from 'browser-redux-sync';
 import { configureBg, combineReducers } from 'browser-redux-bg';
 import reducers from '../reducers';
 import actions from '../actions';
@@ -27,12 +27,7 @@ if (__DEVELOPMENT__) {
 
 export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(combineReducers(reducers, isFromBackground));
-  const persistor = persistStore(store, {
-    ...configureBg(store, actions, isFromBackground),
-    storage: storage,
-    serialize: data => data,
-    deserialize: data => data
-  }, callback);
+  const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), callback);
   sync(persistor);
   return store;
 }
