@@ -11,6 +11,7 @@ window.addEventListener('load', () => {
   injectDiv.style.width = '200px';
   injectDiv.style.border = '1px solid #ccc';
   injectDiv.style.textAlign = 'center';
+  injectDiv.className = 'browser-redux';
   document.body.appendChild(injectDiv);
 
   React.render(

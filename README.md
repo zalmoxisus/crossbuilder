@@ -79,10 +79,38 @@ npm run compress:app
 - [Load the extension](https://developer.chrome.com/extensions/getstarted#unpacked)
 - [Launch your app](https://developer.chrome.com/apps/first_app#five)
 
+## Test
+
+```bash
+# test app
+npm run test:app
+
+# start Chromedriver for testing with Chrome
+npm run before:test:chrome
+
+# test Chrome extension
+npm run test:chrome:extension
+
+# test Chrome app
+npm run test:chrome:app
+
+# test Chrome extension and app
+npm run test:chrome
+
+# test everything
+npm test
+```
+
+#### Structure
+
+* `test/app`: tests for Redux actions and reducers, and for React components (using [Legit Tests](https://github.com/Legitcode/tests))
+* `test/chrome`: for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
+
 
 ## Roadmap
 
-- [ ] Add tests (using [sinon-chrome](https://github.com/vitalets/sinon-chrome))
+- [x] Chrome app
+- [x] Chrome extension
 - [ ] Firefox extension (according to [wiki.mozilla.org/WebExtensions](https://wiki.mozilla.org/WebExtensions))
 - [ ] Safari extension (based on [Chrome to Safari port](https://code.google.com/p/adblockforchrome/source/browse/trunk/port.js))
 

@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 class Counter extends Component {
   render() {
     const { increment, incrementIfOdd, incrementAsync, bg, decrement, state } = this.props;
-    console.log('%cRender ' + this.constructor.displayName + ' component', 'background: #FFF; color: #2aa198 ', 'state', this.state, 'props', this.props);
     return (
       <p>
         Clicked: {state.counter.count} times
