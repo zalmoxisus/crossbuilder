@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Counter from '../components/Counter';
 import * as counterActions from '../actions/counter';
-import * as bgActions from 'browser-redux-bg/lib/actions/send';
+import { bgActions } from 'browser-redux-bg';
 
 function mapStateToProps(state) {
   return {

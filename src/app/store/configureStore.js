@@ -5,8 +5,7 @@ import sync from 'browser-redux-sync';
 import storage from './storage';
 import reducers from '../reducers';
 import actions from '../actions';
-import bgConfig from 'browser-redux-bg/lib/configure';
-import combineReducers from 'browser-redux-bg/lib/reducers';
+import { configureBg, combineReducers } from 'browser-redux-bg';
 
 let finalCreateStore;
 if (__DEVELOPMENT__) {
@@ -30,7 +29,7 @@ if (__DEVELOPMENT__) {
 export default function configureStore(initialState, isFromBackground, callback) {
   let store = finalCreateStore(combineReducers(reducers, isFromBackground));
   const persistor = persistStore(store, {
-    ...bgConfig(store, actions, isFromBackground),
+    ...configureBg(store, actions, isFromBackground),
     storage: storage,
     serialize: data => data,
     deserialize: data => data
