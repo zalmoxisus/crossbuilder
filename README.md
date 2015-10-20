@@ -10,6 +10,15 @@ The developing is the same as for the web apps with React and Redux, just use th
 
 The app example is edited from [Redux Counter example](https://github.com/rackt/redux/tree/master/examples/counter) using [Redux Persist](https://github.com/rt2zz/redux-persist), based on [React Chrome Extension Boilerplate](https://github.com/jhen0409/react-chrome-extension-boilerplate).
 
+## Structure
+
+- [browser-redux-sync](https://github.com/zalmoxisus/browser-redux-sync): states syncing module.
+- [browser-redux-bg](https://github.com/zalmoxisus/browser-redux-bg): messaging module - send redux actions (from popup, windows or inject pages) to be called in the background by their function name. 
+- `src/app`: React cross-browser application.
+- `src/browser`: sources for the extension and Chrome app.
+- `test/app`: tests for Redux actions and reducers, and for React components (using [Legit Tests](https://github.com/Legitcode/tests)).
+- `test/chrome`: tests for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver)).
+
 ## Included
 
  - [react](https://github.com/facebook/react)
@@ -100,12 +109,6 @@ npm run test:chrome
 # test everything
 npm test
 ```
-
-#### Structure
-
-* `test/app`: tests for Redux actions and reducers, and for React components (using [Legit Tests](https://github.com/Legitcode/tests))
-* `test/chrome`: for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
-
 
 ## Roadmap
 
