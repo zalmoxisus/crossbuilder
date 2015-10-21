@@ -94,10 +94,11 @@ npm run compress:app
 npm run compress:firefox
 ```
 
-## Load to Chrome
+## Load
 
-- [Load the extension](https://developer.chrome.com/extensions/getstarted#unpacked)
-- [Launch your app](https://developer.chrome.com/apps/first_app#five)
+- [Load the extension to Chrome](https://developer.chrome.com/extensions/getstarted#unpacked).
+- [Launch your Chrome app](https://developer.chrome.com/apps/first_app#five).
+- Firefox: [Prerequisites](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Prerequisites), [Installing](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Packaging_and_installation#Installing_Your_Extension).
 
 ## Test
 
@@ -125,7 +126,7 @@ npm test
 
 - [x] Chrome app
 - [x] Chrome extension
-- [ ] Firefox extension (according to [wiki.mozilla.org/WebExtensions](https://wiki.mozilla.org/WebExtensions))
+- [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/browser-redux/issues/12))
 - [ ] Safari extension (based on [Chrome to Safari port](https://code.google.com/p/adblockforchrome/source/browse/trunk/port.js))
 
 ## LICENSE
