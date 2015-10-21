@@ -38,8 +38,7 @@ export function clickButtons(initialValue, container = 'p', className) {
   [
     [ 1, initialValue, initialValue + 1 ],
     [ 4, initialValue + 1, initialValue + 2 ],
-    [ 5, initialValue + 2, initialValue + 3 ],
-    [ 2, initialValue + 3, initialValue + 2 ]
+    [ 5, initialValue + 2, initialValue + 2 ]
   ].forEach((params) => {
     hasClickedButton(...params, container, className);
   });
