@@ -28,7 +28,7 @@ function popWindow(action, url, type, customOptions, store) {
     ...customOptions
   };
   if (action === 'open') {
-    options.url = url;
+    options.url = chrome.extension.getURL(url);
     chrome.windows.create(options, (win) => {
       windows[type] = win.id;
     });
