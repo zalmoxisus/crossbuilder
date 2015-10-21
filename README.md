@@ -73,6 +73,14 @@ npm run build:extension
 npm run build:app
 ```
 
+## Build firefox extension
+
+```bash
+# build files to './build/firefox'
+npm run build:firefox
+````
+Note that it's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file.
+
 ## Build & Compress ZIP file
 
 ```bash
@@ -81,12 +89,16 @@ npm run compress:extension
 
 # compress app's build folder to app.zip
 npm run compress:app
+
+# compress firefox extension's build folder to firefox.xpi
+npm run compress:firefox
 ```
 
-## Load to Chrome
+## Load
 
-- [Load the extension](https://developer.chrome.com/extensions/getstarted#unpacked)
-- [Launch your app](https://developer.chrome.com/apps/first_app#five)
+- [Load the extension to Chrome](https://developer.chrome.com/extensions/getstarted#unpacked).
+- [Launch your Chrome app](https://developer.chrome.com/apps/first_app#five).
+- Firefox: [Prerequisites](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Prerequisites), [Installing](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Packaging_and_installation#Installing_Your_Extension).
 
 ## Test
 
@@ -114,7 +126,7 @@ npm test
 
 - [x] Chrome app
 - [x] Chrome extension
-- [ ] Firefox extension (according to [wiki.mozilla.org/WebExtensions](https://wiki.mozilla.org/WebExtensions))
+- [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/browser-redux/issues/12))
 - [ ] Safari extension (based on [Chrome to Safari port](https://code.google.com/p/adblockforchrome/source/browse/trunk/port.js))
 
 ## LICENSE

@@ -3,6 +3,11 @@
   "name": "browser-extension",
   "manifest_version": 2,
   "description": "Redux counter example",
+  "applications": {
+    "gecko": {
+      "id": "browser-redux@test.com"
+    }
+  },
   "browser_action": {
     "default_icon": "img/logo/48x48.png",
     "default_title": "Redux counter example",
