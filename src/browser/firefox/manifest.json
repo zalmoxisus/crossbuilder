@@ -1,0 +1,34 @@
+{
+  "version": "0.0.0",
+  "name": "browser-extension",
+  "manifest_version": 2,
+  "description": "Redux counter example",
+  "applications": {
+    "gecko": {
+      "id": "browser-redux@test.com"
+    }
+  },
+  "browser_action": {
+    "default_icon": "img/logo/48x48.png",
+    "default_title": "Redux counter example",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/logo/16x16.png",
+    "48": "img/logo/48x48.png",
+    "128": "img/logo/128x128.png",
+    "scalable": "img/logo/scalable.ico"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["js/inject.bundle.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
+  "content_security_policy": "script-src 'self'; object-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+}
