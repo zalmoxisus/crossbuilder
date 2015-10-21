@@ -7,6 +7,7 @@ import { extensionName, appTitle, injectClassName } from '../config';
 let extensionId;
 
 describe('Chrome extension', function() {
+  this.timeout(60000);
 
   before(function(done) {
     doBefore.call(this, done, () => {
