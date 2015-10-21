@@ -9,6 +9,7 @@
     "build:firefox": "BABEL_ENV=production gulp build:firefox",
     "compress:extension": "npm run build:extension && gulp compress:extension",
     "compress:app": "npm run build:app && gulp compress:app",
+    "compress:firefox": "npm run build:firefox && gulp compress:firefox",
     "clean": "rm -rf build/ && rm -rf dev/",
     "lint": "eslint .",
     "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",

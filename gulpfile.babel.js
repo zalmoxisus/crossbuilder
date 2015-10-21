@@ -127,12 +127,7 @@ gulp.task('copy:build:firefox', ['build:extension'], () => {
   gulp.src('./build/extension/**').pipe(gulp.dest('./build/firefox'))
     .on('finish', function() {
       gulp.src('./src/browser/firefox/manifest.json')
-        .pipe(gulp.dest('./build/firefox'))
-        .on('finish', function() {
-          gulp.src('build/firefox/**')
-            .pipe(zip('firefox.xpi'))
-            .pipe(gulp.dest('./build'));
-        });
+        .pipe(gulp.dest('./build/firefox'));
     });
 });
 
@@ -140,15 +135,21 @@ gulp.task('copy:build:firefox', ['build:extension'], () => {
  * compress task
  */
 
-gulp.task('zip:extension', () => {
+gulp.task('compress:extension', () => {
   gulp.src('build/extension/*')
     .pipe(zip('extension.zip'))
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('zip:app', () => {
+gulp.task('compress:app', () => {
   gulp.src('build/app/*')
     .pipe(zip('app.zip'))
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('compress:firefox', () => {
+  gulp.src('build/firefox/**')
+    .pipe(zip('firefox.xpi'))
     .pipe(gulp.dest('./build'));
 });
 
@@ -156,5 +157,3 @@ gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev',
 gulp.task('build:extension', ['replace-webpack-code', 'webpack:build:extension', 'views:build:extension', 'copy:build:extension']);
 gulp.task('build:app', ['replace-webpack-code', 'webpack:build:app', 'views:build:app', 'copy:build:app']);
 gulp.task('build:firefox', ['copy:build:firefox']);
-gulp.task('compress:extension', ['zip:extension']);
-gulp.task('compress:app', ['zip:app']);
