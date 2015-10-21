@@ -21,7 +21,7 @@ describe('Chrome app window', function() {
                 }
                 return false;
               })
-          , 15000, 'Chrome app not launched');
+          , 9000, 'Chrome app not launched');
       });
     }, './build/app');
   });

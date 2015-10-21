@@ -48,7 +48,6 @@ describe('Chrome extension', function() {
 
   describe('inject page', function() {
     it('should open Github', function(done) {
-      this.timeout(10000);
       this.driver.get('https://github.com').then(() => {
         this.driver.getTitle().then((title) => {
           expect(title).toEqual('GitHub · Where software is built');
@@ -58,7 +57,6 @@ describe('Chrome extension', function() {
     });
 
     it('should render inject app', function(done) {
-      this.timeout(8000);
       this.driver.wait(() =>
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)

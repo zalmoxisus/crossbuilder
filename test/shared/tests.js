@@ -18,11 +18,10 @@ export function hasValue(value, container = 'p', className) {
 }
 export function hasValueWait(value, container = 'p', className) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
-    this.timeout(5000);
     this.driver.wait(() =>
       this.driver.findElements(selectXPath('', value, container, className))
         .then((elems) => elems.length === 1)
-      , 4000, 'element with such value doesn\'t exist')
+      , 9000, 'element with such value doesn\'t exist')
       .then(() => done());
   });
 }
