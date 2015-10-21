@@ -7,6 +7,7 @@ import { appName, appTitle } from '../config';
 let appHandle;
 
 describe('Chrome app window', function() {
+  this.timeout(60000);
 
   before(function(done) {
     doBefore.call(this, done, () => {
