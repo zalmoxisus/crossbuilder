@@ -25,7 +25,7 @@ function configureSync() {
     deserialize: function deserialize(data) {
       return data;
     },
-    debounce: 1000
+    debounce: 0
   });
 }
 

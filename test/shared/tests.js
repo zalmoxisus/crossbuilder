@@ -3,23 +3,24 @@ import expect from 'expect';
 
 function selectXPath(child, value, container, className) {
   return webdriver.By.xpath(
-    '//' + container + '[' + (className ? '@class="' + className + '" and ' : '') + './/span[text()="Clicked: "] and .//span[text()="' + value + '"] and .//span[text()=" times"]]' + child
+    '//' + container + '[' + (className ? '@class="' + className + '" and ' : '') + './/span[text()="Clicked: "] and .//span[text()=" times"]]' + child
   );
 }
 
 export function hasValue(value, container = 'p', className) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
-    this.driver.findElements(selectXPath('', value, container, className))
-      .then((elems) => {
-        expect(elems.length).toBe(1);
-        setTimeout(()=>{done();}, 600);
-      });
+    var el = this.driver.findElement(webdriver.By.className('counter'));
+    el.getText().then(function(val) {
+      expect(val).toBe(value + '');
+      done();
+    });
+
   });
 }
 export function hasValueWait(value, container = 'p', className) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
     this.driver.wait(() =>
-      this.driver.findElements(selectXPath('', value, container, className))
+      this.driver.findElements(webdriver.By.className('counter'))
         .then((elems) => elems.length === 1)
       , 30000, 'element with such value doesn\'t exist')
       .then(() => { setTimeout(()=>{done();}, 1000); } );
@@ -31,7 +32,7 @@ export function hasClickedButton(idx, initialValue, finalValue, container = 'p',
     this.driver.findElement(selectXPath('//button[' + idx + ']', initialValue, container, className))
       .click().then(() => done());
   });
-  hasValueWait(finalValue, container, className);
+  hasValue(finalValue, container, className);
 }
 
 export function clickButtons(initialValue, container = 'p', className) {
