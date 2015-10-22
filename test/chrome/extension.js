@@ -32,21 +32,6 @@ describe('Chrome extension', function() {
     Test.clickButtons(0);
   });
 
-  describe('popup', function() {
-    it('should open popup', function(done) {
-      this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
-        this.driver.getCurrentUrl().then((url) => {
-          expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
-          setTimeout(()=>{ done(); }, 5000);
-        });
-      });
-    });
-
-    Test.hasTitle(appTitle);
-    Test.hasValue(1);
-    Test.clickButtons(1);
-  });
-
   describe('inject page', function() {
     it('should open Github', function(done) {
       this.driver.get('https://github.com').then(() => {
@@ -65,8 +50,24 @@ describe('Chrome extension', function() {
         .then(() => { setTimeout(()=>{done();}, 5000); } );
     });
 
-    Test.hasValue(2, 'div', injectClassName);
-    Test.clickButtons(2, 'div', injectClassName);
+    Test.hasValue(1, 'div', injectClassName);
+    Test.clickButtons(1, 'div', injectClassName);
+  });
+
+
+  describe('popup', function() {
+    it('should open popup', function(done) {
+      this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
+        this.driver.getCurrentUrl().then((url) => {
+          expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
+          setTimeout(()=>{ done(); }, 5000);
+        });
+      });
+    });
+
+    Test.hasTitle(appTitle);
+    Test.hasValue(2);
+    Test.clickButtons(2);
   });
 
 });
