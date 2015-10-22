@@ -43,8 +43,8 @@ describe('Chrome extension', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(3);
-    Test.clickButtons(3);
+    Test.hasValue(2);
+    Test.clickButtons(2);
   });
 
   describe('inject page', function() {
