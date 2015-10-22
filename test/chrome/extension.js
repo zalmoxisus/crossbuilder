@@ -67,6 +67,9 @@ describe('Chrome extension', function() {
 
     Test.hasTitle(appTitle);
     Test.hasValue(2);
+    Test.hasValue(2);
+    Test.hasValue(2);
+    Test.hasValue(2);
     Test.clickButtons(2);
   });
 

@@ -12,7 +12,7 @@ export function hasValue(value, container = 'p', className) {
     var el = this.driver.findElement(webdriver.By.className('counter'));
     el.getText().then(function(val) {
       expect(val).toBe(value + '');
-      done();
+      setTimeout(()=>{done();}, 1000);
     });
 
   });
