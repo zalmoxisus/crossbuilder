@@ -65,8 +65,8 @@ describe('Chrome extension', function() {
         .then(() => done());
     });
 
-    Test.hasValue(5, 'div', injectClassName);
-    Test.clickButtons(5, 'div', injectClassName);
+    Test.hasValue(4, 'div', injectClassName);
+    Test.clickButtons(4, 'div', injectClassName);
   });
 
 });
