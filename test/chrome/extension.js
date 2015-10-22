@@ -43,8 +43,8 @@ describe('Chrome extension', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(2);
-    Test.clickButtons(2);
+    Test.hasValue(0);
+    Test.clickButtons(0);
   });
 
   describe('inject page', function() {
@@ -65,8 +65,8 @@ describe('Chrome extension', function() {
         .then(() => done());
     });
 
-    Test.hasValue(4, 'div', injectClassName);
-    Test.clickButtons(4, 'div', injectClassName);
+    Test.hasValue(0, 'div', injectClassName);
+    Test.clickButtons(0, 'div', injectClassName);
   });
 
 });

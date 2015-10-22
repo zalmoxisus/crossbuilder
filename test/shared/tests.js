@@ -22,7 +22,7 @@ export function hasValueWait(value, container = 'p', className) {
       this.driver.findElements(selectXPath('', value, container, className))
         .then((elems) => elems.length === 1)
       , 30000, 'element with such value doesn\'t exist')
-      .then(() => { setTimeout(()=>{done();}, 2000); } );
+      .then(() => { setTimeout(()=>{done();}, 200); } );
   });
 }
 
