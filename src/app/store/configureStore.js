@@ -26,7 +26,7 @@ if (__DEVELOPMENT__) {
 }
 
 export default function configureStore(initialState, isFromBackground, callback) {
-  let store = finalCreateStore(combineReducers(reducers, isFromBackground));
+  let store = finalCreateStore(combineReducers(reducers, isFromBackground), initialState);
   const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), callback);
   sync(persistor);
   return store;

@@ -28,8 +28,8 @@ describe('Chrome extension', function() {
 
   describe('window', function() {
     Test.hasTitle(appTitle);
-    Test.hasValue(0);
-    Test.clickButtons(0);
+    Test.hasValue(10);
+    Test.clickButtons(10);
   });
 
   describe('inject page', function() {
@@ -47,11 +47,11 @@ describe('Chrome extension', function() {
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)
         , 7000, 'Inject app not found')
-        .then(() => { done(); } );
+        .then(() => { setTimeout(()=>{done();}, 5000); } );
     });
 
-    Test.hasValue(1, 'div', injectClassName);
-    Test.clickButtons(1, 'div', injectClassName);
+    Test.hasValue(11, 'div', injectClassName);
+    Test.clickButtons(11, 'div', injectClassName);
   });
 
 
@@ -60,17 +60,14 @@ describe('Chrome extension', function() {
       this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
         this.driver.getCurrentUrl().then((url) => {
           expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
-          done();
+          setTimeout(()=>{ done(); }, 5000);
         });
       });
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(2);
-    Test.hasValue(2);
-    Test.hasValue(2);
-    Test.hasValue(2);
-    Test.clickButtons(2);
+    Test.hasValue(12);
+    Test.clickButtons(12);
   });
 
 });

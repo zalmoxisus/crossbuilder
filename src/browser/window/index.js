@@ -4,7 +4,7 @@ import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import Root from '../../app/containers/Root';
 import configureStore from '../../app/store/configureStore';
 
-const store = configureStore();
+const store = configureStore({counter: { count: 10 }});
 
 React.render(
   <div>
