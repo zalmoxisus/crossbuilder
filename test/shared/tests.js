@@ -12,7 +12,7 @@ export function hasValue(value, container = 'p', className) {
     this.driver.findElements(selectXPath('', value, container, className))
       .then((elems) => {
         expect(elems.length).toBe(1);
-        done();
+        setTimeout(()=>{done();}, 600);
       });
   });
 }
@@ -31,13 +31,13 @@ export function hasClickedButton(idx, initialValue, finalValue, container = 'p',
     this.driver.findElement(selectXPath('//button[' + idx + ']', initialValue, container, className))
       .click().then(() => done());
   });
-  hasValueWait(finalValue, container, className);
+  hasValue(finalValue, container, className);
 }
 
 export function clickButtons(initialValue, container = 'p', className) {
   [
     [ 1, initialValue, initialValue + 1 ],
-    [ 4, initialValue + 1, initialValue + 2 ]
+    [ 1, initialValue + 1, initialValue + 2 ]
   ].forEach((params) => {
     hasClickedButton(...params, container, className);
   });

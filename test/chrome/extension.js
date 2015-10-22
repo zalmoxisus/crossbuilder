@@ -37,7 +37,7 @@ describe('Chrome extension', function() {
       this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
         this.driver.getCurrentUrl().then((url) => {
           expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
-          setTimeout(()=>{ done(); }, 1000);
+          setTimeout(()=>{ done(); }, 5000);
         });
       });
     });
@@ -62,7 +62,7 @@ describe('Chrome extension', function() {
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)
         , 7000, 'Inject app not found')
-        .then(() => { setTimeout(()=>{done();}, 200); } );
+        .then(() => { setTimeout(()=>{done();}, 5000); } );
     });
 
     Test.hasValue(4, 'div', injectClassName);
