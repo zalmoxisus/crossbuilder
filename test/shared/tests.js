@@ -36,8 +36,7 @@ export function hasClickedButton(idx, initialValue, finalValue, container = 'p',
 
 export function clickButtons(initialValue, container = 'p', className) {
   [
-    [ 1, initialValue, initialValue + 1 ],
-    [ 1, initialValue + 1, initialValue + 2 ]
+    [ 1, initialValue, initialValue + 1 ]
   ].forEach((params) => {
     describe(params[1] + '->' + params[2], function() {
       hasClickedButton(...params, container, className);
