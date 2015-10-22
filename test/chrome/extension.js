@@ -65,8 +65,8 @@ describe('Chrome extension', function() {
         .then(() => { setTimeout(()=>{done();}, 5000); } );
     });
 
-    Test.hasValue(4, 'div', injectClassName);
-    Test.clickButtons(4, 'div', injectClassName);
+    Test.hasValue(0, 'div', injectClassName);
+    Test.clickButtons(0, 'div', injectClassName);
   });
 
 });

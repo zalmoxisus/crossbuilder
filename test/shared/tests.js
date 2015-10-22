@@ -22,7 +22,7 @@ export function hasValueWait(value, container = 'p', className) {
       this.driver.findElements(selectXPath('', value, container, className))
         .then((elems) => elems.length === 1)
       , 30000, 'element with such value doesn\'t exist')
-      .then(() => { setTimeout(()=>{done();}, 200); } );
+      .then(() => { setTimeout(()=>{done();}, 1000); } );
   });
 }
 
@@ -31,7 +31,7 @@ export function hasClickedButton(idx, initialValue, finalValue, container = 'p',
     this.driver.findElement(selectXPath('//button[' + idx + ']', initialValue, container, className))
       .click().then(() => done());
   });
-  hasValue(finalValue, container, className);
+  hasValueWait(finalValue, container, className);
 }
 
 export function clickButtons(initialValue, container = 'p', className) {
