@@ -13,5 +13,4 @@ before_script:
   - sleep 3
 
 script:
-  - npm run lint
   - npm test
