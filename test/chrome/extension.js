@@ -37,14 +37,14 @@ describe('Chrome extension', function() {
       this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
         this.driver.getCurrentUrl().then((url) => {
           expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
-          done();
+          setTimeout(()=>{ done(); }, 1000);
         });
       });
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(0);
-    Test.clickButtons(0);
+    Test.hasValue(2);
+    Test.clickButtons(2);
   });
 
   describe('inject page', function() {
@@ -62,11 +62,11 @@ describe('Chrome extension', function() {
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)
         , 7000, 'Inject app not found')
-        .then(() => done());
+        .then(() => { setTimeout(()=>{done();}, 200); } );
     });
 
-    Test.hasValue(0, 'div', injectClassName);
-    Test.clickButtons(0, 'div', injectClassName);
+    Test.hasValue(4, 'div', injectClassName);
+    Test.clickButtons(4, 'div', injectClassName);
   });
 
 });
