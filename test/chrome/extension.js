@@ -28,8 +28,8 @@ describe('Chrome extension', function() {
 
   describe('window', function() {
     Test.hasTitle(appTitle);
-    Test.hasValue(10);
-    Test.clickButtons(10);
+    Test.hasValue(0);
+    Test.clickButtons(0);
   });
 
   describe('inject page', function() {
@@ -50,8 +50,8 @@ describe('Chrome extension', function() {
         .then(() => { setTimeout(()=>{done();}, 5000); } );
     });
 
-    Test.hasValue(11, 'div', injectClassName);
-    Test.clickButtons(11, 'div', injectClassName);
+    Test.hasValue(2, 'div', injectClassName);
+    Test.clickButtons(2, 'div', injectClassName);
   });
 
 
@@ -66,8 +66,8 @@ describe('Chrome extension', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(12);
-    Test.clickButtons(12);
+    Test.hasValue(4);
+    Test.clickButtons(4);
   });
 
 });
