@@ -9,11 +9,13 @@ function selectXPath(child, value, container, className) {
 
 export function hasValue(value, container = 'p', className) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
-    var el = this.driver.findElement(webdriver.By.className('counter'));
-    el.getText().then(function(val) {
-      expect(val).toBe(value + '');
-      done();
-    });
+    setTimeout ( () => {
+      var el = this.driver.findElement(webdriver.By.className('counter'));
+      el.getText().then(function (val) {
+        expect(val).toBe(value + '');
+        done();
+      });
+    }, 5000);
 
   });
 }
