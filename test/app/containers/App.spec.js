@@ -5,7 +5,7 @@ import { clickButton } from '../testMixins';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from '../../../src/app/containers/Root';
+import App from '../../../src/app/containers/App';
 // import configureStore from '../../../src/app/store/configureStore';
 import counter from '../../../src/app/reducers/counter';
 
