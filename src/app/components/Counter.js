@@ -4,19 +4,19 @@ class Counter extends Component {
   render() {
     const { increment, incrementIfOdd, incrementAsync, bg, decrement, state } = this.props;
     return (
-      <p>
-        Clicked: {state.counter.count} times
+      <div>
+        Clicked: <span className="counter">{state.counter.count}</span> times
+        <div className="rule"></div>
+        <button className="btn" onClick={increment}>+</button>
         {' '}
-        <button onClick={increment}>+</button>
-        {' '}
-        <button onClick={decrement}>-</button>
+        <button className="btn" onClick={decrement}>-</button>
+        <div className="rule"></div>
+        <button className="btn" onClick={incrementIfOdd}>Increment if odd</button>
         <br />
-        <button onClick={incrementIfOdd}>Increment if odd</button>
-        <br />
-        <button onClick={() => incrementAsync()}>Increment async</button>
-        <br />
-        <button onClick={() => bg('increment')}>Increment in background</button>
-      </p>
+        <button className="btn" onClick={() => incrementAsync()}>Increment async</button>
+        <div className="rule"></div>
+        <button className="btn" onClick={() => bg('increment')}>Increment in background</button>
+      </div>
     );
   }
 }
