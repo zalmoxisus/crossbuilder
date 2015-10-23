@@ -8,7 +8,7 @@ export function check(done, func) {
   }
 }
 
-export function doBefore(done, action, load = './build/extension', port = 9515, browser = 'chrome', timeout = 60000) {
+export function doBefore(done, action, load = './build/extension', port = 9515, browser = 'chrome', timeout = 10000) {
   this.timeout(timeout);
   this.driver = new webdriver.Builder()
     .usingServer(`http://localhost:${port}`)
@@ -19,6 +19,7 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     })
     .forBrowser(browser)
     .build();
+  console.warn(this.driver);
   action().then(() => done());
 }
 
