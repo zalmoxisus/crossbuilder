@@ -15,7 +15,7 @@ export function hasValue(value, container = 'p', className) {
         expect(val).toBe(value + '');
         done();
       });
-    }, 30000);
+    }, 5000);
 
   });
 }
