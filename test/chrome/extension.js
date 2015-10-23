@@ -7,6 +7,7 @@ import { extensionName, appTitle, injectClassName } from '../config';
 let extensionId;
 
 describe('Chrome extension', function() {
+  this.timeout(15000);
 
   before(function(done) {
     doBefore.call(this, done, () => {
@@ -42,13 +43,12 @@ describe('Chrome extension', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValue(3);
-    Test.clickButtons(3);
+    Test.hasValue(2);
+    Test.clickButtons(2);
   });
 
   describe('inject page', function() {
     it('should open Github', function(done) {
-      this.timeout(10000);
       this.driver.get('https://github.com').then(() => {
         this.driver.getTitle().then((title) => {
           expect(title).toEqual('GitHub · Where software is built');
@@ -58,7 +58,6 @@ describe('Chrome extension', function() {
     });
 
     it('should render inject app', function(done) {
-      this.timeout(8000);
       this.driver.wait(() =>
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)
@@ -66,8 +65,8 @@ describe('Chrome extension', function() {
         .then(() => done());
     });
 
-    Test.hasValue(5, 'div', injectClassName);
-    Test.clickButtons(5, 'div', injectClassName);
+    Test.hasValue(4, injectClassName);
+    Test.clickButtons(4, injectClassName);
   });
 
 });

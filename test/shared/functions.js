@@ -8,8 +8,7 @@ export function check(done, func) {
   }
 }
 
-export function doBefore(done, action, load = './build/extension', port = 9515, browser = 'chrome', timeout = 6000) {
-  this.timeout(timeout);
+export function doBefore(done, action, load = './build/extension', port = 9515, browser = 'chrome') {
   this.driver = new webdriver.Builder()
     .usingServer(`http://localhost:${port}`)
     .withCapabilities({

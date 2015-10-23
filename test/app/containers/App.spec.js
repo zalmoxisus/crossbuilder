@@ -19,17 +19,17 @@ describe('containers', () => {
   describe('App', () => {
     it('should display initial count', () => {
       Test(<Provider store={ configureStore() }>{ () => <App /> }</Provider>)
-        .find('p')
+        .find('span.counter')
         .renderToString(string => {
-          expect(string).toMatch(/Clicked: 0 times/);
+          expect(string).toMatch(/0/);
         });
     });
 
     [
-      { title: 'should display updated count after increment button click', result: /Clicked: 1 times/ },
-      { title: 'should display updated count after decrement button click', result: /Clicked: -1 times/ },
-      { title: 'shouldnt change if even and if odd button clicked', result: /Clicked: 0 times/ },
-      { idx: 2, title: 'should change if odd and if odd button clicked', value: { counter: { count: 1 } }, result: /Clicked: 2 times/ }
+      { title: 'should display updated count after increment button click', result: 1 },
+      { title: 'should display updated count after decrement button click', result: -1 },
+      { title: 'shouldnt change if even and if odd button clicked', result: 0 },
+      { idx: 2, title: 'should change if odd and if odd button clicked', value: { counter: { count: 1 } }, result: 2 }
     ]
     .forEach((rule, idx) => {
       it(rule.title, () => {
@@ -37,7 +37,7 @@ describe('containers', () => {
           .mixin({clickButton: clickButton})
           .clickButton(rule.idx || idx)
           .renderToString(string => {
-            expect(string).toMatch(rule.result);
+            expect(string).toMatch(new RegExp('Clicked: <span class="counter">' + rule.result + '<\/span> times'));
           });
       });
     });

@@ -19,7 +19,7 @@ describe('Counter component', () => {
     Test(<Counter {...props} />)
       .find('p')
       .renderToString(p => {
-        expect(p).toMatch(/Clicked: 1 times/);
+        expect(p).toMatch(/Clicked: <span class="counter">1<\/span> times/);
       });
   });
 

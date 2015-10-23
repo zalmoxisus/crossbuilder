@@ -1,48 +1,55 @@
 import webdriver from 'selenium-webdriver';
 import expect from 'expect';
 
-function selectXPath(child, value, container, className) {
-  return webdriver.By.xpath(
-    '//' + container + '[' + (className ? '@class="' + className + '" and ' : '') + './/span[text()="Clicked: "] and .//span[text()="' + value + '"] and .//span[text()=" times"]]' + child
-  );
+function checkValue(value, done) {
+  this.driver.findElement(webdriver.By.className('counter'))
+    .getText().then((val) => {
+      expect(val).toBe(value + '');
+      done();
+    });
 }
 
-export function hasValue(value, container = 'p', className) {
+export function hasValue(value) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
-    this.driver.findElements(selectXPath('', value, container, className))
-      .then((elems) => {
-        expect(elems.length).toBe(1);
-        done();
-      });
+    checkValue.call(this, value, done);
   });
 }
-export function hasValueWait(value, container = 'p', className) {
+export function hasValueWait(value, timeout = 10000) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
-    this.timeout(5000);
+    /*
     this.driver.wait(() =>
-      this.driver.findElements(selectXPath('', value, container, className))
+      this.driver.findElements(webdriver.By.className('counter'))
         .then((elems) => elems.length === 1)
       , 4000, 'element with such value doesn\'t exist')
       .then(() => done());
+      */
+    setTimeout(()=>{
+      checkValue.call(this, value, done);
+    }, timeout);
   });
 }
 
-export function hasClickedButton(idx, initialValue, finalValue, container = 'p', className) {
+export function hasClickedButton(idx, newValue, className) {
   it('should click button with idx=' + idx, function(done) {
-    this.driver.findElement(selectXPath('//button[' + idx + ']', initialValue, container, className))
+    this.driver.findElement(
+        webdriver.By.xpath(
+          '//div[' + (className ? '@class="' + className + '" and ' : '') + './/span[text()="Clicked: "] and .//span[text()=" times"]]//button[' + idx + ']'
+        ))
       .click().then(() => done());
   });
-  hasValueWait(finalValue, container, className);
+  hasValueWait(newValue);
 }
 
-export function clickButtons(initialValue, container = 'p', className) {
+export function clickButtons(initialValue, className) {
   [
-    [ 1, initialValue, initialValue + 1 ],
-    [ 4, initialValue + 1, initialValue + 2 ],
-    [ 5, initialValue + 2, initialValue + 3 ],
-    [ 2, initialValue + 3, initialValue + 2 ]
+    [ 1, initialValue + 1 ],
+    [ 4, initialValue + 2 ],
+    [ 5, initialValue + 3 ],
+    [ 2, initialValue + 2 ]
   ].forEach((params) => {
-    hasClickedButton(...params, container, className);
+    describe(' -> ' + params[1], function() {
+      hasClickedButton(...params, className);
+    });
   });
 }
 
