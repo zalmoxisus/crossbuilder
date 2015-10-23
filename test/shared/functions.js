@@ -19,7 +19,6 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     })
     .forBrowser(browser)
     .build();
-  console.warn(this.driver);
   action().then(() => done());
 }
 

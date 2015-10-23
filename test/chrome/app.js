@@ -12,17 +12,19 @@ describe('Chrome app window', function() {
   before(function(done) {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
-        this.driver.findElement(webdriver.By.className('launch-link')).click();
-        return this.driver.wait(() =>
-            this.driver.getAllWindowHandles()
-              .then(windows => {
-                if (windows.length === 2) {
-                  appHandle = windows[1];
-                  return true;
-                }
-                return false;
-              })
-          , 9000, 'Chrome app not launched');
+        setTimeout(() => {
+          this.driver.findElement(webdriver.By.className('launch-link')).click();
+          return this.driver.wait(() =>
+              this.driver.getAllWindowHandles()
+                .then(windows => {
+                  if (windows.length === 2) {
+                    appHandle = windows[1];
+                    return true;
+                  }
+                  return false;
+                })
+            , 9000, 'Chrome app not launched');
+        }, 10000);
       });
     }, './build/app');
   });

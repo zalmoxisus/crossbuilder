@@ -19,3 +19,4 @@ before_script:
 
 script:
   - npm run test:chrome:extension
+  - npm run test:chrome:app
