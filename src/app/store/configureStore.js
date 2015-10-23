@@ -27,9 +27,8 @@ if (__DEVELOPMENT__) {
 
 export default function configureStore(callback, isFromBackground) {
   chrome.storage.local.get(null, obj => {
-    let store = finalCreateStore(combineReducers(reducers, isFromBackground), {counter: obj['reduxPersist:counter'], extension: obj['reduxPersist:extension']});
-    const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)));
-    sync(persistor);
-    callback(store);
+    let store = finalCreateStore(combineReducers(reducers, isFromBackground)/*, {counter: obj['reduxPersist:counter'], extension: obj['reduxPersist:extension']}*/);
+    const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), () => {sync(persistor); callback(store);});
+    
   });
 }
