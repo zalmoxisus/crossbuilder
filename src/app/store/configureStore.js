@@ -25,9 +25,9 @@ if (__DEVELOPMENT__) {
   )(createStore);
 }
 
-export default function configureStore(initialState, isFromBackground, callback) {
-  let store = finalCreateStore(combineReducers(reducers, isFromBackground));
-  const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), callback);
-  sync(persistor);
-  return store;
+export default function configureStore(callback, isFromBackground, initialState) {
+  chrome.storage.local.get(null, obj => {
+    let store = finalCreateStore(combineReducers(reducers, isFromBackground), initialState);
+    const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), () => {sync(persistor); callback(store);});
+  });
 }
