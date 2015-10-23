@@ -15,7 +15,7 @@ export function hasValue(value, container = 'p', className) {
         expect(val).toBe(value + '');
         done();
       });
-    }, 5000);
+    }, 30000);
 
   });
 }
@@ -42,7 +42,7 @@ export function clickButtons(initialValue, container = 'p', className) {
     [ 1, initialValue, initialValue + 1 ],
     [ 4, initialValue + 1, initialValue + 2 ],
     [ 5, initialValue + 2, initialValue + 3 ],
-    [ 2, initialValue + 3, initialValue + 2 ]
+    [ 1, initialValue + 3, initialValue + 4 ]
   ].forEach((params) => {
     describe(params[1] + '->' + params[2], function() {
       hasClickedButton(...params, container, className);
