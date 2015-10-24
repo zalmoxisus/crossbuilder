@@ -4,7 +4,6 @@ import { autoRehydrate } from 'redux-persist';
 import { persistState } from 'redux-devtools';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
 
 const logger = createLogger({level: 'info', collapsed: true});
 const middleware = [
@@ -13,10 +12,10 @@ const middleware = [
   logger
 ];
 
-const finalCreateStore = compose(
+const finalCreateStore = (isFromBackground) => compose(
   applyMiddleware(...middleware),
   autoRehydrate(),
-  DevTools.instrument()
+  require('../containers/' + (isFromBackground ? 'DevTools.bg' : 'DevTools')).instrument()
 )(createStore);
 
 export default finalCreateStore;

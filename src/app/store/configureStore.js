@@ -16,7 +16,7 @@ export default function configureStore(callback, isFromBackground, initialState)
       finalCreateStore = require('./configureStore.prod');
       store = finalCreateStore(rootReducer, initialState);
     } else {
-      finalCreateStore = require('./configureStore.dev');
+      finalCreateStore = require('./configureStore.dev')(isFromBackground);
       store = finalCreateStore(rootReducer, initialState);
 
       if (module.hot) {
