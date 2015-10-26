@@ -1,15 +1,5 @@
-import { connect } from 'react-redux';
-
-import Counter from '../components/Counter';
-import * as counterActions from '../actions/counter';
-import { bgActions } from 'browser-redux-bg';
-
-function mapStateToProps(state) {
-  return {
-    state: state
-  };
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./Root.prod');
+} else {
+  module.exports = require('./Root.dev');
 }
-
-const mapDispatchToProps = { ...counterActions, ...bgActions};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);

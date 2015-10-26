@@ -1,11 +1,14 @@
 import React from 'react';
-import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createDevTools } from 'redux-devtools';
+import DevTools from '../../../app/containers/DevTools';
 
 chrome.runtime.getBackgroundPage( background => {
-  React.render(
-    <DebugPanel top right bottom left >
-      <DevTools store={background.store} monitor={LogMonitor} />
-    </DebugPanel>,
+  render(
+    <Provider store={background.store}>
+        <DevTools />
+    </Provider>,
     document.getElementById('root')
   );
 });

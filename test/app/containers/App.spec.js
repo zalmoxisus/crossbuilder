@@ -5,7 +5,7 @@ import { clickButton } from '../testMixins';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from '../../../src/app/containers/Root';
+import App from '../../../src/app/containers/App';
 // import configureStore from '../../../src/app/store/configureStore';
 import counter from '../../../src/app/reducers/counter';
 
@@ -18,7 +18,7 @@ describe('containers', () => {
 
   describe('App', () => {
     it('should display initial count', () => {
-      Test(<Provider store={ configureStore() }>{ () => <App /> }</Provider>)
+      Test(<Provider store={ configureStore() }><App /></Provider>)
         .find('span.counter')
         .renderToString(string => {
           expect(string).toMatch(/0/);
@@ -33,7 +33,7 @@ describe('containers', () => {
     ]
     .forEach((rule, idx) => {
       it(rule.title, () => {
-        Test(<Provider store={ configureStore(rule.value) }>{ () => <App /> }</Provider>)
+        Test(<Provider store={ configureStore(rule.value) }><App /></Provider>)
           .mixin({clickButton: clickButton})
           .clickButton(rule.idx || idx)
           .renderToString(string => {

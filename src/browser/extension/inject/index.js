@@ -1,6 +1,6 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import Root from '../../../app/containers/Root';
+import { render } from 'react-dom';
+import Root from '../../../app/containers/Root.prod';
 import configureStore from '../../../app/store/configureStore';
 
 configureStore(store => {
@@ -15,10 +15,8 @@ configureStore(store => {
     injectDiv.className = 'browser-redux';
     document.body.appendChild(injectDiv);
 
-    React.render(
-      <Provider store={store}>
-        {() => <Root />}
-      </Provider>,
+    render(
+      <Root store={store} />,
       injectDiv
     );
   });
