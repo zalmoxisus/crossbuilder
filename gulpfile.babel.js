@@ -136,13 +136,13 @@ gulp.task('copy:build:firefox', ['build:extension'], () => {
  */
 
 gulp.task('compress:extension', () => {
-  gulp.src('build/extension/*')
+  gulp.src('build/extension/**')
     .pipe(zip('extension.zip'))
     .pipe(gulp.dest('./build'));
 });
 
 gulp.task('compress:app', () => {
-  gulp.src('build/app/*')
+  gulp.src('build/app/**')
     .pipe(zip('app.zip'))
     .pipe(gulp.dest('./build'));
 });
