@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { persistStore, autoRehydrate } from 'redux-persist';
+import { getStoredState, persistStore } from 'redux-persist';
 import { configureSync, sync } from 'browser-redux-sync';
 import { configureBg, combineReducers } from 'browser-redux-bg';
 import reducers from '../reducers';
 import actions from '../actions';
 
-export default function configureStore(callback, isFromBackground, initialState) {
-  chrome.storage.local.get(null, obj => {
+export default function configureStore(callback, isFromBackground) {
+  getStoredState(configureSync(), (err, initialState) => {
     let rootReducer = combineReducers(reducers, isFromBackground);
     let finalCreateStore;
     let store;
