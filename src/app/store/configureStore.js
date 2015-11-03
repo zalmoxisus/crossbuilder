@@ -1,14 +1,15 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { getStoredState, persistStore } from 'redux-persist';
 import { configureSync, sync } from 'browser-redux-sync';
-import { configureBg, combineReducers } from 'browser-redux-bg';
+import { configureBg, bgReducer } from 'browser-redux-bg';
 import reducers from '../reducers';
 import actions from '../actions';
 
 export default function configureStore(callback, isFromBackground) {
   getStoredState(configureSync(), (err, initialState) => {
-    let rootReducer = combineReducers(reducers, isFromBackground);
+    const extension = bgReducer(isFromBackground);
+    const rootReducer = combineReducers({ ...reducers, extension });
     let finalCreateStore;
     let store;
 
