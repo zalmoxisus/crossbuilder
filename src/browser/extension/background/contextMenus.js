@@ -1,7 +1,6 @@
 let windows = {app: 0, devtools: 0};
 
 const MENU_APP = 'MENU_APP';
-const MENU_DEVTOOLS = 'MENU_DEVTOOLS';
 
 function addToMenu(id, title, contexts, onClick) {
   chrome.contextMenus.create({
@@ -19,7 +18,7 @@ function closeIfExist(type) {
   }
 }
 
-function popWindow(action, url, type, customOptions, store) {
+function popWindow(action, url, type, customOptions) {
   closeIfExist(type);
   let options = {
     type: 'popup',
@@ -35,9 +34,8 @@ function popWindow(action, url, type, customOptions, store) {
   }
 }
 
-function createMenu(store) {
+function createMenu() {
   addToMenu(MENU_APP, 'Redux Counter App', ['all'], () => popWindow('open', 'window.html', 'app', {left: 0, width: 1080}));
-  if (__DEVELOPMENT__) addToMenu(MENU_DEVTOOLS, 'Background Redux DevTools', ['all'], () => popWindow('open', 'devtools.html', 'devtools', {left: 1100, width: 320}, store));
 }
 
 export default createMenu;

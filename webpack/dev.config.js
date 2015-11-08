@@ -13,8 +13,7 @@ export default {
     background: [ path.join(__dirname, '../src/browser/extension/background/index'), ...entry ],
     window: [ path.join(__dirname, '../src/browser/window/index'), ...entry ],
     popup: [ path.join(__dirname, '../src/browser/extension/popup/index'), ...entry ],
-    inject: [ path.join(__dirname, '../src/browser/extension/inject/index'), ...entry ],
-    devtools: [ path.join(__dirname, '../src/browser/extension/background/devTools'), ...entry ]
+    inject: [ path.join(__dirname, '../src/browser/extension/inject/index'), ...entry ]
   },
   output: {
     path: path.join(__dirname, '../dev/js'),

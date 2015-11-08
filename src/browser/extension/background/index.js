@@ -4,7 +4,7 @@ import createBadge from './badge';
 
 configureStore(store => {
   window.store = store;
-  createMenu(store);
+  createMenu();
   createBadge(store);
 
   if (__DEVELOPMENT__) {
