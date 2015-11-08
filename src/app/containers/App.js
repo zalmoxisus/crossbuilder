@@ -2,14 +2,11 @@ import { connect } from 'react-redux';
 
 import Counter from '../components/Counter';
 import * as counterActions from '../actions/counter';
-import { bgActions } from 'browser-redux-bg';
 
 function mapStateToProps(state) {
-  return {
-    state: state
-  };
+  return { state: state };
 }
 
-const mapDispatchToProps = { ...counterActions, ...bgActions};
+const mapDispatchToProps = counterActions; // { ...counterActions, ...};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

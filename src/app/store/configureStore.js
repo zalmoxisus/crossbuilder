@@ -2,14 +2,12 @@ import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { getStoredState, persistStore } from 'redux-persist';
 import { configureSync, sync } from 'browser-redux-sync';
-import { configureBg, bgReducer } from 'browser-redux-bg';
 import reducers from '../reducers';
 import actions from '../actions';
 
 export default function configureStore(callback, isFromBackground) {
   getStoredState(configureSync(), (err, initialState) => {
-    const extension = bgReducer(isFromBackground);
-    const rootReducer = combineReducers({ ...reducers, extension });
+    const rootReducer = combineReducers({ ...reducers });
     let finalCreateStore;
     let store;
 
@@ -27,6 +25,6 @@ export default function configureStore(callback, isFromBackground) {
       }
     }
 
-    const persistor = persistStore(store, configureSync(configureBg(store, actions, isFromBackground)), () => {sync(persistor); callback(store);});
+    const persistor = persistStore(store, configureSync(), () => {sync(persistor); callback(store);});
   });
 }

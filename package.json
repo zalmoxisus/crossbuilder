@@ -78,7 +78,6 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "browser-redux-bg": "^0.2.0",
     "browser-redux-sync": "^0.3.4",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
