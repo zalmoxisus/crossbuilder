@@ -14,22 +14,22 @@ export function hasValue(value) {
     checkValue.call(this, value, done);
   });
 }
-export function hasValueWait(value) {
+export function hasValueWait(value, timeout) {
   it('should contain text "Clicked: ' + value + ' times"', function(done) {
+    /*
     this.driver.wait(() =>
       this.driver.findElements(webdriver.By.className('counter'))
         .then((elems) => elems.length === 1)
       , 4000, 'element with such value doesn\'t exist')
       .then(() => done());
-    /*
+      */
     setTimeout(()=>{
       checkValue.call(this, value, done);
-    }, 4000);
-    */
+    }, timeout);
   });
 }
 
-export function hasClickedButton(idx, newValue, className) {
+export function hasClickedButton(className, idx, newValue, timeout) {
   it('should click button with idx=' + idx, function(done) {
     this.driver.findElement(
         webdriver.By.xpath(
@@ -37,17 +37,17 @@ export function hasClickedButton(idx, newValue, className) {
         ))
       .click().then(() => done());
   });
-  hasValueWait(newValue);
+  hasValueWait(newValue, timeout);
 }
 
 export function clickButtons(initialValue, className) {
   [
     [ 1, initialValue + 1 ],
-    [ 4, initialValue + 2 ],
+    [ 4, initialValue + 2, 1100 ],
     [ 2, initialValue + 1 ]
   ].forEach((params) => {
     describe(' -> ' + params[1], function() {
-      hasClickedButton(...params, className);
+      hasClickedButton(className, ...params);
     });
   });
 }

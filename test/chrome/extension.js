@@ -43,7 +43,7 @@ describe('Chrome extension', function() {
     });
 
     Test.hasTitle(appTitle);
-    Test.hasValueWait(1);
+    Test.hasValue(1);
     Test.clickButtons(1);
   });
 
@@ -65,7 +65,7 @@ describe('Chrome extension', function() {
         .then(() => done());
     });
 
-    Test.hasValueWait(2, injectClassName);
+    Test.hasValue(2, injectClassName);
     Test.clickButtons(2, injectClassName);
   });
 
