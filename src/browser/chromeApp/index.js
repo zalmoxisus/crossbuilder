@@ -1,6 +1,7 @@
 import configureStore from '../../app/store/configureStore';
 
 configureStore(store => {
+  window.store = store;
   chrome.app.runtime.onLaunched.addListener(function() {
     chrome.app.window.create('window.html', {
       'state': 'maximized'

@@ -9,8 +9,7 @@ const props = {
   increment: expect.createSpy(),
   decrement: expect.createSpy(),
   incrementIfOdd: expect.createSpy(),
-  incrementAsync: expect.createSpy(),
-  bg: expect.createSpy()
+  incrementAsync: expect.createSpy()
 };
 
 describe('Counter component', () => {
@@ -23,7 +22,7 @@ describe('Counter component', () => {
       });
   });
 
-  ['increment', 'decrement', 'incrementIfOdd', 'incrementAsync', 'bg']
+  ['increment', 'decrement', 'incrementIfOdd', 'incrementAsync']
     .forEach((toBeCalled, idx) => {
       it('first button should call ' + toBeCalled, () => {
         Test(<Counter {...props} />)
