@@ -1,12 +1,20 @@
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { getStoredState, persistStore } from 'redux-persist';
-import { configureSync, sync } from 'browser-redux-sync';
+import storage from 'chrome-storage-local';
 import reducers from '../reducers';
 import actions from '../actions';
 
+const persistConfig = {
+  storage: storage,
+  skipRestore: true,
+  serialize: data => data,
+  deserialize: data => data,
+  debounce: 0
+};
+
 export default function configureStore(callback, isFromBackground) {
-  getStoredState(configureSync(), (err, initialState) => {
+  getStoredState(persistConfig, (err, initialState) => {
     const rootReducer = combineReducers({ ...reducers });
     let finalCreateStore;
     let store;
@@ -25,6 +33,6 @@ export default function configureStore(callback, isFromBackground) {
       }
     }
 
-    const persistor = persistStore(store, configureSync(), () => {sync(persistor); callback(store);});
+    persistStore(store, persistConfig, () => { callback(store); });
   });
 }

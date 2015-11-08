@@ -78,7 +78,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "browser-redux-sync": "^0.3.4",
+    "chrome-storage-local": "^0.1.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
