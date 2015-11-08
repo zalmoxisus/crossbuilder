@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { getStoredState, persistStore } from 'redux-persist';
 import storage from 'chrome-storage-local';
@@ -12,19 +12,24 @@ const persistConfig = {
   debounce: 0
 };
 
-export default function configureStore(callback, isFromBackground) {
+export default function configureStore(callback) {
   getStoredState(persistConfig, (err, initialState) => {
+    let finalCreateStore;
     const middleware = [thunk];
 
     if (process.env.NODE_ENV !== 'production') {
-      Object.assign(middleware, [
-        require('redux-logger')({level: 'info', collapsed: true}),
-        require('redux-immutable-state-invariant')()
-      ]);
+      middleware.push(
+        require('redux-immutable-state-invariant')(),
+        require('redux-logger')({level: 'info', collapsed: true})
+      );
+      finalCreateStore = compose(
+        applyMiddleware(...middleware),
+      )(createStore);
+    } else {
+      finalCreateStore = applyMiddleware(...middleware)(createStore);
     }
 
-    const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
-    const store = createStoreWithMiddleware(rootReducer, initialState);
+    const store = finalCreateStore(rootReducer, initialState);
 
     if (process.env.NODE_ENV !== 'production') {
       if (module.hot) {
