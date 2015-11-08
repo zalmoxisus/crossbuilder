@@ -24,6 +24,7 @@ export default function configureStore(callback) {
       );
       finalCreateStore = compose(
         applyMiddleware(...middleware),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
       )(createStore);
     } else {
       finalCreateStore = applyMiddleware(...middleware)(createStore);
