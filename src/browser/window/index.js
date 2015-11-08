@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from '../../app/containers/Root';
-import configureStore from '../../app/store/configureStore';
+import Root from '../../app/containers/Root.prod';
 
-configureStore(store => {
+chrome.runtime.getBackgroundPage( background => {
   render(
-    <Root store={store} />,
+    <Root store={background.store} />,
     document.getElementById('root')
   );
 });
