@@ -5,6 +5,7 @@
     "__DEVELOPMENT__": true
   },
   "env": {
+    "mocha": true,
     "browser": true,
     "node": true
   },
@@ -23,7 +24,6 @@
     "func-names": 0,
     "prefer-const": 0,
     "comma-dangle": 0,
-    "no-undef": 0,
     "id-length": 0,
     "indent": [2, 2, {"SwitchCase": 1}],
     "new-cap": [2, { "capIsNewExceptions": ["Test"] }]
