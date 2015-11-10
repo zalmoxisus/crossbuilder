@@ -8,7 +8,7 @@ const entry = [
 ];
 
 export default {
-  devtool: 'inline-source-map',
+  devtool: 'eval-cheap-module-source-map',
   entry: {
     background: [ path.join(__dirname, '../src/browser/extension/background/index'), ...entry ],
     window: [ path.join(__dirname, '../src/browser/window/index'), ...entry ],
