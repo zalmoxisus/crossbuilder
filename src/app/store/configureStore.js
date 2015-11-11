@@ -2,7 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { getStoredState, persistStore } from 'redux-persist';
 import storage from 'chrome-storage-local';
+import notify from 'redux-notify';
 import rootReducer from '../reducers';
+import notifyEvents from '../events/notifyEvents';
 
 const persistConfig = {
   storage: storage,
@@ -15,7 +17,7 @@ const persistConfig = {
 export default function configureStore(callback) {
   getStoredState(persistConfig, (err, initialState) => {
     let finalCreateStore;
-    const middleware = [thunk];
+    const middleware = [thunk, notify(notifyEvents)];
 
     if (process.env.NODE_ENV !== 'production') {
       middleware.push(

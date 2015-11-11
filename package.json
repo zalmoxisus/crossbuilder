@@ -83,6 +83,7 @@
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
     "redux": "^3.0.0",
+    "redux-notify": "^0.1.0",
     "redux-persist": "^1.4.1",
     "redux-thunk": "^1.0.0"
   }
