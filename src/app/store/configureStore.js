@@ -6,16 +6,22 @@ import notify from 'redux-notify';
 import rootReducer from '../reducers';
 import notifyEvents from '../events/notifyEvents';
 
-const persistConfig = {
-  storage: storage,
-  skipRestore: true,
-  serialize: data => data,
-  deserialize: data => data,
-  debounce: 0
-};
+function _getStoredState(configure, callback) {
+  const persistConfig = {
+    storage: storage,
+    skipRestore: true,
+    serialize: data => data,
+    deserialize: data => data,
+    debounce: 0
+  };
+  getStoredState(persistConfig, (err, initialState) => {
+    const store = configure(initialState);
+    persistStore(store, persistConfig, () => { callback(store); });
+  });
+}
 
 export default function configureStore(callback) {
-  getStoredState(persistConfig, (err, initialState) => {
+  _getStoredState(initialState => {
     let finalCreateStore;
     const middleware = [thunk, notify(notifyEvents)];
 
@@ -42,6 +48,6 @@ export default function configureStore(callback) {
       }
     }
 
-    persistStore(store, persistConfig, () => { callback(store); });
-  });
+    return store;
+  }, callback);
 }
