@@ -1,27 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { getStoredState, persistStore } from 'redux-persist';
-import storage from 'chrome-storage-local';
 import notify from 'redux-notify';
 import rootReducer from '../reducers';
 import notifyEvents from '../events/notifyEvents';
-
-function _getStoredState(configure, callback) {
-  const persistConfig = {
-    storage: storage,
-    skipRestore: true,
-    serialize: data => data,
-    deserialize: data => data,
-    debounce: 0
-  };
-  getStoredState(persistConfig, (err, initialState) => {
-    const store = configure(initialState);
-    persistStore(store, persistConfig, () => { callback(store); });
-  });
-}
+import getStoredState from './getStoredState';
 
 export default function configureStore(callback) {
-  _getStoredState(initialState => {
+  getStoredState(initialState => {
     let finalCreateStore;
     const middleware = [thunk, notify(notifyEvents)];
 
