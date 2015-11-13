@@ -1,7 +1,7 @@
 import { getStoredState, persistStore } from 'redux-persist';
 import storage from 'chrome-storage-local';
 
-function _getStoredState(configure, callback) {
+export default function(configure, callback) {
   const persistConfig = {
     storage: storage,
     skipRestore: true,
@@ -14,5 +14,3 @@ function _getStoredState(configure, callback) {
     persistStore(store, persistConfig, () => { callback(store); });
   });
 }
-
-export default _getStoredState;

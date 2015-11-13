@@ -3,10 +3,11 @@ import thunk from 'redux-thunk';
 import notify from 'redux-notify';
 import rootReducer from '../reducers';
 import notifyEvents from '../events/notifyEvents';
-import getStoredState from './getStoredState';
 
-export default function configureStore(callback) {
-  getStoredState(initialState => {
+export default function configureStore(callback, isBg) {
+  const getState = ( isBg ? require('./getStoredState') : require('./getBgState'));
+
+  getState(initialState => {
     let finalCreateStore;
     const middleware = [thunk, notify(notifyEvents)];
 
