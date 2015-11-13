@@ -1,7 +1,7 @@
 import { onConnect } from 'crossmessaging';
 import configureStore from '../../../app/store/configureStore';
 import createMenu from './contextMenus';
-import createBadge from './badge';
+import initBadge from './badge';
 
 configureStore(store => {
   onConnect(
@@ -13,7 +13,7 @@ configureStore(store => {
 
   window.store = store;
   createMenu();
-  createBadge(store);
+  initBadge(store.getState().counter.count);
 
   if (__DEVELOPMENT__) {
     require('./inject');
