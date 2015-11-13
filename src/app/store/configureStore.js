@@ -9,7 +9,10 @@ export default function configureStore(callback, isBg) {
 
   getState(initialState => {
     let finalCreateStore;
-    const middleware = [thunk, notify(notifyEvents)];
+    const middleware = [
+      thunk,
+      notify(notifyEvents, { noReverse: true })
+    ];
 
     if (process.env.NODE_ENV !== 'production') {
       middleware.push(
