@@ -1,15 +1,12 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes';
 import { REHYDRATE_COMPLETE } from 'redux-persist/constants';
-import { updateBadge } from '../actions/extension';
+import { updateBadge, passNotification } from '../actions/extension';
 
-let events = [];
-if (chrome.browserAction) {
-  events = [
-    {
-      catch: [INCREMENT_COUNTER, DECREMENT_COUNTER, REHYDRATE_COMPLETE],
-      dispatch: updateBadge
-    }
-  ];
-}
+const events = [
+  {
+    catch: [INCREMENT_COUNTER, DECREMENT_COUNTER],
+    dispatch: passNotification
+  }
+];
 
 export default events;

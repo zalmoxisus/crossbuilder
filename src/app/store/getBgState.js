@@ -1,14 +1,17 @@
 import { connect } from 'crossmessaging';
 
 export default function(configure, callback) {
+  let store;
   const connection = connect();
 
   connection.postMessage({ name: 'init' });
 
   connection.onMessage.addListener((message) => {
     if (message.name === 'init') {
-      const store = configure(message.state);
+      store = configure(message.state);
       callback(store);
+    } else if (message.name === 'redux-notify' && message.action && store) {
+      store.dispatch(message.action);
     }
   });
 }

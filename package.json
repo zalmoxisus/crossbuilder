@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "chrome-storage-local": "^0.1.1",
-    "crossmessaging": "0.0.1",
+    "crossmessaging": "0.1.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
