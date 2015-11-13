@@ -2,7 +2,7 @@ import { connect } from 'crossmessaging';
 
 export default function(configure, callback) {
   let store;
-  const connection = connect();
+  const connection = connect(true);
 
   connection.postMessage({ name: 'init' });
 
