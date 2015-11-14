@@ -1,15 +1,16 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, NOTIFY_SEND, NOTIFY_RECEIVE } from '../constants/ActionTypes';
 
 export default function counter(state = { count: 0 }, action) {
-  let newState;
+  if (window.bgBadge && (action.type === NOTIFY_SEND || action.type === NOTIFY_RECEIVE)) {
+    window.bgBadge(state.count); return state;
+  }
+
   switch (action.type) {
     case INCREMENT_COUNTER:
-      newState = { ...state, count: state.count + 1 }; break;
+      return { ...state, count: state.count + 1 };
     case DECREMENT_COUNTER:
-      newState = { ...state, count: state.count - 1 }; break;
+      return { ...state, count: state.count - 1 };
     default:
       return state;
   }
-  if (window.bgBadge) window.bgBadge(newState.count);
-  return newState;
 }
