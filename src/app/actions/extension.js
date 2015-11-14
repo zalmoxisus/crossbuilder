@@ -1,7 +1,14 @@
 import { sendMessage } from 'crossmessaging';
-import { NOTIFY } from '../constants/ActionTypes';
+import { NOTIFY_SEND, NOTIFY_RECEIVE } from '../constants/ActionTypes';
 
-export function passNotification(calleeAction) {
-  sendMessage({ name: 'redux-notify', action: calleeAction });
-  return { type: NOTIFY };
+export function sendNotification(action) {
+  sendMessage({ name: 'redux-notify', action: action });
+  return { type: NOTIFY_SEND };
+}
+
+export function receiveNotification(action) {
+  return dispatch => {
+    dispatch(action);
+    dispatch({ type: NOTIFY_RECEIVE });
+  };
 }

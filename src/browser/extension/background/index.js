@@ -1,5 +1,6 @@
 import { onConnect } from 'crossmessaging';
 import configureStore from '../../../app/store/configureStore';
+import { receiveNotification } from '../../../app/actions/extension';
 import createMenu from './contextMenus';
 import initBadge from './badge';
 
@@ -7,7 +8,7 @@ configureStore(store => {
   onConnect(
     () => ({ name: 'init', state: { counter: store.getState().counter } }),
     {
-      'redux-notify': (message) => store.dispatch(message.action)
+      'redux-notify': (message) => { store.dispatch(receiveNotification(message.action)); }
     }
   );
 
