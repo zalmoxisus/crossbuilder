@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 import notifyEvents from '../events/notifyEvents';
 
 export default function configureStore(callback, isBg) {
-  const getState = ( isBg ? require('./getStoredState') : require('./getBgState'));
+  const getState = ( isBg ? require('./getStateToBg') : require('./getStateFromBg'));
 
   getState(initialState => {
     let finalCreateStore;
