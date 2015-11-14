@@ -12,8 +12,6 @@ The app example is edited from [Redux Counter example](https://github.com/rackt/
 
 ## Structure
 
-- [browser-redux-sync](https://github.com/zalmoxisus/browser-redux-sync): states syncing module.
-- [browser-redux-bg](https://github.com/zalmoxisus/browser-redux-bg): messaging module - send redux actions (from popup, windows or inject pages) to be called in the background by their function name. 
 - `src/app`: React cross-browser application.
 - `src/browser`: sources for the extension and Chrome app.
 - `test/app`: tests for Redux actions and reducers, and for React components (using [Legit Tests](https://github.com/Legitcode/tests)).
