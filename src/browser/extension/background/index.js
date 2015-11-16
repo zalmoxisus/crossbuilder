@@ -1,4 +1,4 @@
-import configureStore from '../../../app/store/configureStore';
+import configureStore from 'app/store/configureStore';
 import createMenu from './contextMenus';
 import initBadge from './badge';
 

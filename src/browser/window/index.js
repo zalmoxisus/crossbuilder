@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from '../../app/containers/Root';
+import Root from 'app/containers/Root';
 
 chrome.runtime.getBackgroundPage( background => {
   render(

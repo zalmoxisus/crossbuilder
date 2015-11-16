@@ -27,6 +27,7 @@ export default {
     })
   ],
   resolve: {
+    alias: {app: path.join(__dirname, '../src/app')},
     extensions: ['', '.js']
   },
   module: {
