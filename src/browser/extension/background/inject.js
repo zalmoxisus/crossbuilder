@@ -3,9 +3,7 @@
 const arrowURLs = [ 'https://github.com' ];
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.status !== 'loading') return;
-  const matched = arrowURLs.every(url => !!tab.url.match(url));
-  if (!matched) return;
+  if (changeInfo.status !== 'loading' || !tab.url.match(new RegExp(arrowURLs.join('|')))) return;
 
   chrome.tabs.executeScript(tabId, {
     code: 'var injected = window.browserReduxInjected; window.browserReduxInjected = true; injected;',
