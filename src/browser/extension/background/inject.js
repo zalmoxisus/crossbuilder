@@ -1,9 +1,9 @@
 // dev only: async fetch bundle
 
-const arrowURLs = [ 'https://github.com' ];
+const arrowURLs = [ '^https://github\\.com' ];
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.status !== 'loading' || !tab.url.match(new RegExp(arrowURLs.join('|')))) return;
+  if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
 
   chrome.tabs.executeScript(tabId, {
     code: 'var injected = window.browserReduxInjected; window.browserReduxInjected = true; injected;',
