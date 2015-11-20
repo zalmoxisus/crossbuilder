@@ -14,9 +14,6 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     .withCapabilities({
       chromeOptions: {
         args: [
-          '--disable-gpu',
-          '--disable-impl-side-painting',
-          '--disable-gpu-sandbox',
           '--no-sandbox',
           `load-extension=${load}`
         ]
@@ -27,7 +24,6 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
   action().then(() => done());
 }
 
-export function doAfter(done, timeout = 20000) {
-  this.timeout(timeout);
+export function doAfter(done) {
   this.driver.quit().then(done);
 }
