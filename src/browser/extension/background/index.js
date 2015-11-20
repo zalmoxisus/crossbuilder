@@ -7,7 +7,7 @@ configureStore(store => {
   createMenu();
   initBadge(store.getState().counter.count);
 
-  if (__DEVELOPMENT__) {
+  if (process.env.NODE_ENV !== 'production') {
     require('./inject');
   }
 

@@ -23,10 +23,7 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      __DEVELOPMENT__: true
-    })
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     alias: {app: path.join(__dirname, '../src/app')},
