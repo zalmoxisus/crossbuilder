@@ -13,7 +13,10 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     .usingServer(`http://localhost:${port}`)
     .withCapabilities({
       chromeOptions: {
-        args: [ `load-extension=${load}` ]
+        args: [
+          '--disable-impl-side-painting',
+          `load-extension=${load}`
+        ]
       }
     })
     .forBrowser(browser)
