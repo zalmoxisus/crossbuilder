@@ -12,6 +12,10 @@ describe('Chrome app window', function() {
   before(function(done) {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
+        this.driver.findElement(webdriver.By.className('launch-link'))
+          .getText().then((val) => {
+            expect(val).toBe('Launch');
+          });
         this.driver.findElement(webdriver.By.className('launch-link')).click();
         return this.driver.wait(() =>
             this.driver.getAllWindowHandles()
