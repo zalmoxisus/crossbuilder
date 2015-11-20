@@ -15,6 +15,7 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
       chromeOptions: {
         args: [
           '--disable-impl-side-painting',
+          '--no-sandbox',
           `load-extension=${load}`
         ]
       }
