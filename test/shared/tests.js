@@ -43,7 +43,7 @@ export function hasClickedButton(className, idx, newValue, timeout) {
 export function clickButtons(initialValue, className) {
   [
     [ 1, initialValue + 1 ],
-    [ 4, initialValue + 2, 1100 ],
+    [ 4, initialValue + 2, 2000 ],
     [ 2, initialValue + 1 ]
   ].forEach((params) => {
     describe(' -> ' + params[1], function() {
