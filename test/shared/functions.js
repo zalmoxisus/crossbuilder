@@ -14,7 +14,9 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     .withCapabilities({
       chromeOptions: {
         args: [
+          '--disable-gpu',
           '--disable-impl-side-painting',
+          '--disable-gpu-sandbox',
           '--no-sandbox',
           `load-extension=${load}`
         ]
