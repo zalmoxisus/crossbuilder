@@ -14,7 +14,6 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
     .withCapabilities({
       chromeOptions: {
         args: [
-          '--no-sandbox',
           `load-extension=${load}`
         ]
       }
