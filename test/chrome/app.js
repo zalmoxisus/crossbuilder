@@ -23,6 +23,7 @@ describe('Chrome app window', function() {
             this.driver.getAllWindowHandles()
               .then(windows => {
                 if (windows.length > 1) {
+                  console.log('windows.length', windows.length);
                   appHandle = windows[1];
                   return true;
                 }
