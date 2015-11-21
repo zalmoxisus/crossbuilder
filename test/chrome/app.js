@@ -25,7 +25,7 @@ describe('Chrome app window', function() {
                   appHandle = windows[1];
                   return true;
                 }
-                console.log('windows.length', windows.length);
+                launchLink.click();
                 return false;
               })
           , 25000, 'Chrome app not launched');
