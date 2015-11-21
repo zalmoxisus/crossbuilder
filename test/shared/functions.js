@@ -21,7 +21,6 @@ export function doBefore(done, action, load = './build/extension', port = 9515, 
   action().then(() => done());
 }
 
-export function doAfter(done, timeout = 20000) {
-  this.timeout(timeout);
+export function doAfter(done) {
   this.driver.quit().then(done);
 }
