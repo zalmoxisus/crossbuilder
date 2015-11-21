@@ -12,17 +12,23 @@ describe('Chrome app window', function() {
   before(function(done) {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
-        this.driver.findElement(webdriver.By.className('launch-link')).click();
+        const launchLink = this.driver.findElement(webdriver.By.className('launch-link'));
+        launchLink.getText().then(val => {
+          expect(val).toBe('Launch');
+        });
+        launchLink.click();
+        let attempts = 0;
         return this.driver.wait(() =>
             this.driver.getAllWindowHandles()
               .then(windows => {
-                if (windows.length === 2) {
+                if (windows.length > 1) {
                   appHandle = windows[1];
                   return true;
                 }
+                if (attempts++ > 3) launchLink.click();
                 return false;
               })
-          , 15000, 'Chrome app not launched');
+          , 10000, 'Chrome app not launched (the app window not found)');
       });
     }, './build/app');
   });
@@ -34,10 +40,10 @@ describe('Chrome app window', function() {
 
     this.driver.switchTo().window(appHandle).then(() => {
       this.driver.getWindowHandle().then(
-          (handle) => {
-            expect(handle).toEqual(appHandle);
-            done();
-          });
+        (handle) => {
+          expect(handle).toEqual(appHandle);
+          done();
+        });
     });
   });
 
