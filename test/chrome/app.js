@@ -21,7 +21,7 @@ describe('Chrome app window', function() {
         return this.driver.wait(() =>
             this.driver.getAllWindowHandles()
               .then(windows => {
-                if (windows.length === 2) {
+                if (windows.length > 1) {
                   appHandle = windows[1];
                   return true;
                 }
