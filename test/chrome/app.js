@@ -18,6 +18,7 @@ describe('Chrome app window', function() {
           expect(val).toBe('Launch');
         });
         launchLink.click();
+        let attempts = 0;
         return this.driver.wait(() =>
             this.driver.getAllWindowHandles()
               .then(windows => {
@@ -25,7 +26,7 @@ describe('Chrome app window', function() {
                   appHandle = windows[1];
                   return true;
                 }
-                launchLink.click();
+                if (attempts++ > 3) launchLink.click();
                 return false;
               })
           , 25000, 'Chrome app not launched');
