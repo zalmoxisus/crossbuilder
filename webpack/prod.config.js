@@ -1,44 +1,14 @@
 import path from 'path';
-import webpack from 'webpack';
+import baseConfig from './base.config';
 
-export default {
-  entry: {
-    background: [ path.join(__dirname, '../src/browser/extension/background/index') ],
-    window: [ path.join(__dirname, '../src/browser/window/index') ],
-    popup: [ path.join(__dirname, '../src/browser/extension/popup/index') ],
-    inject: [ path.join(__dirname, '../src/browser/extension/inject/index') ]
+export default baseConfig(
+  undefined,
+  {
+    path: path.join(__dirname, '../build/extension/js')
   },
-  output: {
-    path: path.join(__dirname, '../build/extension/js'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js'
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      compressor: {
-        warnings: false
-      }
-    })
-  ],
-  resolve: {
-    alias: {app: path.join(__dirname, '../src/app')},
-    extensions: ['', '.js']
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/
-    }, {
-      test: /\.css?$/,
-      loaders: ['style', 'raw']
-    }]
+  {
+    'process.env': {
+      NODE_ENV: '"production"'
+    }
   }
-};
+);
