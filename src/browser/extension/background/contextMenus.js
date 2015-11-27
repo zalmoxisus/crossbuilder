@@ -1,4 +1,4 @@
-let windows = {app: 0, devtools: 0};
+let windows = {};
 
 const MENU_APP = 'MENU_APP';
 
@@ -35,7 +35,7 @@ function popWindow(action, url, type, customOptions) {
 }
 
 function createMenu() {
-  addToMenu(MENU_APP, 'Redux Counter App', ['all'], () => popWindow('open', 'window.html', 'app', {left: 0, width: 1080}));
+  addToMenu(MENU_APP, 'Redux Counter App', ['all'], () => popWindow('open', 'window.html', MENU_APP, {left: 0, width: 1080}));
 }
 
 export default createMenu;
