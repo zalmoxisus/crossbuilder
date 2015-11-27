@@ -18,21 +18,27 @@ The app example is edited from [Redux Counter example](https://github.com/rackt/
 - `test/chrome`: tests for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver)).
 
 ## Included
+- *Boilerplate specific dependencies*
+ - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
+ - [redux-notify](https://github.com/zalmoxisus/redux-notify)
+ - [crossmessaging](https://github.com/zalmoxisus/crossmessaging)
+ - [chrome-storage-local](https://github.com/zalmoxisus/chrome-storage-local)
 
+- *App*
  - [react](https://github.com/facebook/react)
  - [redux](https://github.com/rackt/redux)
  - [react-redux](https://github.com/gaearon/react-redux)
  - [redux-persist](https://github.com/rt2zz/redux-persist)
- - [redux-devtools](https://github.com/gaearon/redux-devtools)
- - [redux-logger](https://github.com/fcomb/redux-logger)
- - [redbox-react](https://github.com/KeywordBrain/redbox-react)
- - [react-chrome-extension-boilerplate](https://github.com/jhen0409/react-chrome-extension-boilerplate)
- - [webpack](https://github.com/webpack/webpack)
- - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
- - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
+
+- *Dev*
  - [babel](https://github.com/babel/babel)
  - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
  - [gulp](https://github.com/gulpjs/gulp)
+ - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
+ - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
+ - [redux-logger](https://github.com/fcomb/redux-logger)
+ - [redbox-react](https://github.com/KeywordBrain/redbox-react)
+ - [webpack](https://github.com/webpack/webpack)
 
 ## Installation
 
@@ -56,6 +62,10 @@ You can load unpacked extensions with `./dev`.
 #### React/Flux hot reload
 
 This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window. If the inject page is on https (like `https://github.com`), click the 'shield' icon on the Chrome address bar to allow loading `http://localhost` there (after making any changes in dev mode), so hot reload can work for that page.
+
+#### Debug with Redux DevTools
+
+We use [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension), install it from [Chrome store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for debugging.
 
 ## Build extension
 
