@@ -1,7 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import Test from 'legit-tests';
-import { clickButton } from '../testMixins';
+import { describeWithDOM, mount } from 'reagent';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -14,15 +13,12 @@ function configureStore(initialState) {
   return createStoreWithMiddleware(combineReducers({counter}), initialState);
 }
 
-describe('containers', () => {
+describeWithDOM('containers', () => {
 
   describe('App', () => {
     it('should display initial count', () => {
-      Test(<Provider store={ configureStore() }><App /></Provider>)
-        .find('span.counter')
-        .renderToString(string => {
-          expect(string).toMatch(/0/);
-        });
+      const wrapper = mount(<Provider store={ configureStore() }><App /></Provider>);
+      expect(wrapper.find('span.counter').text()).toBe('0');
     });
 
     [
@@ -33,12 +29,9 @@ describe('containers', () => {
     ]
     .forEach((rule, idx) => {
       it(rule.title, () => {
-        Test(<Provider store={ configureStore(rule.value) }><App /></Provider>)
-          .mixin({clickButton: clickButton})
-          .clickButton(rule.idx || idx)
-          .renderToString(string => {
-            expect(string).toMatch(new RegExp('Clicked: <span class="counter">' + rule.result + '<\/span> times'));
-          });
+        const wrapper = mount(<Provider store={ configureStore(rule.value) }><App /></Provider>);
+        wrapper.find('button').at(rule.idx || idx).simulate('click');
+        expect(wrapper.find('span.counter').text()).toEqual(rule.result);
       });
     });
 

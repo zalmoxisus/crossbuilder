@@ -1,7 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import Test from 'legit-tests';
-import { clickButton } from '../testMixins';
+import { describeWithDOM, mount } from 'reagent';
 import Counter from '../../../src/app/components/Counter';
 
 const props = {
@@ -12,26 +11,17 @@ const props = {
   incrementAsync: expect.createSpy()
 };
 
-describe('Counter component', () => {
-
+describeWithDOM('Counter component', () => {
   it('should display count', () => {
-    Test(<Counter {...props} />)
-      .find('p')
-      .renderToString(p => {
-        expect(p).toMatch(/Clicked: <span class="counter">1<\/span> times/);
-      });
+    const wrapper = mount(<Counter {...props} />);
+    expect(wrapper.find('span.counter').text()).toBe('1');
   });
 
   ['increment', 'decrement', 'incrementIfOdd', 'incrementAsync']
     .forEach((toBeCalled, idx) => {
-      it('first button should call ' + toBeCalled, () => {
-        Test(<Counter {...props} />)
-          .mixin({ clickButton: clickButton })
-          .clickButton(idx)
-          .test(() => {
-            expect(props[toBeCalled]).toHaveBeenCalled();
-          });
+      it((idx + 1) + ' button should call ' + toBeCalled, () => {
+        mount(<Counter {...props} />).find('button').at(idx).simulate('click');
+        expect(props[toBeCalled]).toHaveBeenCalled();
       });
     });
-
 });
