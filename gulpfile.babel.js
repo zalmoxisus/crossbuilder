@@ -165,7 +165,8 @@ gulp.task('app:test', () => {
 gulp.task('chrome:test', () => {
   crdv.start();
   return gulp.src('./test/chrome/**/*.js')
-    .pipe(mocha({ require: ['co-mocha'] }));
+    .pipe(mocha({ require: ['co-mocha'] }))
+    .on('end', () => crdv.stop());
 });
 
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
@@ -173,4 +174,4 @@ gulp.task('build:extension', ['replace-webpack-code', 'webpack:build:extension',
 gulp.task('build:app', ['replace-webpack-code', 'webpack:build:app', 'views:build:app', 'copy:build:app']);
 gulp.task('build:firefox', ['copy:build:firefox']);
 gulp.task('test-app', ['app:test']);
-gulp.task('test-chrome', ['chrome:test'], () => crdv.stop());
+gulp.task('test-chrome', ['chrome:test']);
