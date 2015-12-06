@@ -17,8 +17,6 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start &
   - sleep 3
-  - npm run before:test:chrome &
-  - sleep 3
 
 script:
   - npm run lint

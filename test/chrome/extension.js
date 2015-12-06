@@ -1,6 +1,6 @@
 import webdriver from 'selenium-webdriver';
 import expect from 'expect';
-import { check, doBefore, doAfter } from '../shared/functions';
+import { doBefore, doAfter } from '../shared/functions';
 import * as Test from '../shared/tests';
 import { extensionName, appTitle, injectClassName } from '../config';
 
