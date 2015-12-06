@@ -1,7 +1,7 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER, NOTIFY_SEND, NOTIFY_RECEIVE } from '../constants/ActionTypes';
 
 export default function counter(state = { count: 0 }, action) {
-  if (window.bgBadge && (action.type === NOTIFY_SEND || action.type === NOTIFY_RECEIVE)) {
+  if (typeof window === 'object' && window.bgBadge && (action.type === NOTIFY_SEND || action.type === NOTIFY_RECEIVE)) {
     window.bgBadge(state.count); return state;
   }
 
