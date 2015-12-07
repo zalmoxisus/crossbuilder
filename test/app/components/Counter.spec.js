@@ -1,6 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import { describeWithDOM, mount } from 'reagent';
+import { describeWithDOM, mount } from 'enzyme';
 import Counter from '../../../src/app/components/Counter';
 
 const props = {

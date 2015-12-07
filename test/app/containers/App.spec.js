@@ -1,6 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import { describeWithDOM, mount } from 'reagent';
+import { describeWithDOM, mount } from 'enzyme';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
