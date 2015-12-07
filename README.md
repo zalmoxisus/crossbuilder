@@ -1,5 +1,7 @@
 # Browser App and Extension Boilerplate using Redux Actions
 
+[![Build Status](https://travis-ci.org/zalmoxisus/browser-redux.svg)](https://travis-ci.org/zalmoxisus/browser-redux)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/browser-redux) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/browser-redux/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/browser-redux) [![Dependency Status](https://david-dm.org/zalmoxisus/browser-redux.svg)](https://david-dm.org/zalmoxisus/browser-redux) [![devDependency Status](https://david-dm.org/zalmoxisus/browser-redux/dev-status.svg)](https://david-dm.org/zalmoxisus/browser-redux#info=devDependencies)
+
 Simple boilerplate and library for building Chrome apps and cross-browser extensions (support for Firefox and Safari will come later) that use Redux actions instead of messaging.
 
 ![Demo](demo.gif)
