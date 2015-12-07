@@ -8,18 +8,16 @@ const entry = [
   'webpack/hot/only-dev-server'
 ];
 
-export default baseConfig(
-  undefined,
-  {
+export default baseConfig({
+  output: {
     path: path.join(__dirname, '../dev/js'),
     publicPath: `http://localhost:${port}/js/`
   },
-  {},
-  [
+  plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  [{
+  loaders: [{
     test: /\.js$/,
     loader: 'babel',
     exclude: /node_modules/,
@@ -39,5 +37,5 @@ export default baseConfig(
       }
     }
   }],
-  entry
-);
+  entry: entry
+});

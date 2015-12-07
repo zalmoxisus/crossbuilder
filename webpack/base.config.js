@@ -3,7 +3,7 @@ import webpack from 'webpack';
 
 const srcPath = path.join(__dirname, '../src/browser/');
 
-const baseConfig = (input, output = [], globals = {}, plugins, loaders, entry = []) => ({
+const baseConfig = ({input, output = {}, globals = {}, plugins, loaders, entry = []}) => ({
   entry: input || {
     background: [ `${srcPath}extension/background/index`, ...entry ],
     window: [ `${srcPath}window/index`, ...entry ],
