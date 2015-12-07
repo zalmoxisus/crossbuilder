@@ -1,3 +1,4 @@
+import path from 'path';
 import webdriver from 'selenium-webdriver';
 import expect from 'expect';
 import { doBefore, doAfter } from '../shared/functions';
@@ -30,7 +31,7 @@ describe('Chrome app window', function() {
               })
           , 10000, 'Chrome app not launched (the app window not found)');
       });
-    }, './build/app');
+    }, path.resolve('build/app'));
   });
 
   after(doAfter);

@@ -1,3 +1,4 @@
+import path from 'path';
 import webdriver from 'selenium-webdriver';
 import expect from 'expect';
 import { doBefore, doAfter } from '../shared/functions';
@@ -21,7 +22,7 @@ describe('Chrome extension', function() {
           this.driver.get(`chrome-extension://${id}/window.html`);
         });
       });
-    });
+    }, path.resolve('build/extension'));
   });
 
   after(doAfter);
