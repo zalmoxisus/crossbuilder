@@ -7,18 +7,16 @@ function closeIfExist(type) {
   }
 }
 
-export function popWindow(action, url, type, customOptions) {
+export function popWindow(type, customOptions) {
   closeIfExist(type);
-  let options = {
-    type: 'panel',
-    left: 100, top: 100,
-    width: 800, height: 700,
+  const options = {
+    type: 'popup',
+    left: 0, top: 0,
+    width: window.screen.availWidth, height: window.screen.availHeight,
+    url: chrome.extension.getURL(type + '.html'),
     ...customOptions
   };
-  if (action === 'open') {
-    options.url = chrome.extension.getURL(url);
-    chrome.windows.create(options, (win) => {
-      windows[type] = win.id;
-    });
-  }
+  chrome.windows.create(options, (win) => {
+    windows[type] = win.id;
+  });
 }

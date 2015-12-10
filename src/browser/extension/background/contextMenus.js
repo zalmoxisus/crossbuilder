@@ -1,7 +1,7 @@
 import { popWindow } from 'extension/utils/windows';
 
 const menus = [
-  ['Redux Counter App', ['all'], () => popWindow('open', 'window.html', 'app', {left: 0, width: 1080})]
+  ['Redux Counter App', ['all'], () => popWindow('window')] // 'window' - is the html page name
 ];
 
 function addToMenu(title, contexts, onClick, moreOptions) {
