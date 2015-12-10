@@ -29,7 +29,10 @@ const baseConfig = ({input, output = {}, globals = {}, plugins, loaders, entry =
       ])
   ],
   resolve: {
-    alias: {app: path.join(__dirname, '../src/app')},
+    alias: {
+      app: path.join(__dirname, '../src/app'),
+      extension: path.join(__dirname, '../src/browser/extension')
+    },
     extensions: ['', '.js']
   },
   module: {
