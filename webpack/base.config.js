@@ -39,7 +39,7 @@ const baseConfig = ({input, output = {}, globals = {}, plugins, loaders, entry =
     loaders: [
       ...(loaders ? loaders : [{
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel',
         exclude: /node_modules/
       }]),
       {

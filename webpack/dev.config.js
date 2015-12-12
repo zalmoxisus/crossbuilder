@@ -22,19 +22,24 @@ export default baseConfig({
     loader: 'babel',
     exclude: /node_modules/,
     query: {
-      plugins: ['react-transform'],
-      extra: {
-        'react-transform': {
-          transforms: [{
-            transform: 'react-transform-hmr',
-            imports: ['react'],
-            locals: ['module']
-          }, {
-            transform: 'react-transform-catch-errors',
-            imports: ['react', 'redbox-react']
-          }]
-        }
-      }
+      presets: [ 'es2015', 'stage-0', 'react' ],
+      plugins: [
+        'add-module-exports',
+        'transform-decorators-legacy',
+        [
+          'react-transform',
+          {
+            transforms: [{
+              transform: 'react-transform-hmr',
+              imports: [ 'react' ],
+              locals: [ 'module' ]
+            }, {
+              transform: 'react-transform-catch-errors',
+              imports: [ 'react', 'redbox-react' ]
+            }]
+          }
+        ]
+      ]
     }
   }],
   entry: entry
