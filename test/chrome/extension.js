@@ -7,10 +7,10 @@ import { extensionName, appTitle, injectClassName } from '../config';
 
 let extensionId;
 
-describe('Chrome extension', function() {
+describe('Chrome extension', function () {
   this.timeout(15000);
 
-  before(function(done) {
+  before(function (done) {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
         this.driver.findElements(webdriver.By.xpath(
@@ -27,14 +27,14 @@ describe('Chrome extension', function() {
 
   after(doAfter);
 
-  describe('window', function() {
+  describe('window', function () {
     Test.hasTitle(appTitle);
     Test.hasValue(0);
     Test.clickButtons(0);
   });
 
-  describe('popup', function() {
-    it('should open popup', function(done) {
+  describe('popup', function () {
+    it('should open popup', function (done) {
       this.driver.get(`chrome-extension://${extensionId}/popup.html`).then(() => {
         this.driver.getCurrentUrl().then((url) => {
           expect(url).toBe(`chrome-extension://${extensionId}/popup.html`);
@@ -48,8 +48,8 @@ describe('Chrome extension', function() {
     Test.clickButtons(1);
   });
 
-  describe('inject page', function() {
-    it('should open Github', function(done) {
+  describe('inject page', function () {
+    it('should open Github', function (done) {
       this.driver.get('https://github.com').then(() => {
         this.driver.getTitle().then((title) => {
           expect(title).toEqual('GitHub · Where software is built');
@@ -58,7 +58,7 @@ describe('Chrome extension', function() {
       });
     });
 
-    it('should render inject app', function(done) {
+    it('should render inject app', function (done) {
       this.driver.wait(() =>
           this.driver.findElements(webdriver.By.className(injectClassName))
             .then(elems => elems.length > 0)

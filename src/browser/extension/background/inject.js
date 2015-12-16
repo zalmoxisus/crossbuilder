@@ -1,8 +1,8 @@
 // dev only: async fetch bundle
 
-const arrowURLs = [ '^https://github\\.com' ];
+const arrowURLs = ['^https://github\\.com'];
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
 
   chrome.tabs.executeScript(tabId, {
@@ -18,7 +18,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       const httpRequest = new XMLHttpRequest();
       httpRequest.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');
       httpRequest.send();
-      httpRequest.onreadystatechange = function() {
+      httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
           chrome.tabs.executeScript(tabId, { code: httpRequest.responseText, runAt: 'document_start' });
         }

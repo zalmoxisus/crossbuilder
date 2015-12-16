@@ -4,11 +4,11 @@ const menus = [
   ['Redux Counter App', ['all'], () => popWindow('window')] // 'window' - is the html page name
 ];
 
-function addToMenu(title, contexts, onClick, moreOptions) {
+function addToMenu(title, contexts, onclick, moreOptions) {
   chrome.contextMenus.create({
-    title: title,
-    contexts: contexts,
-    onclick: onClick,
+    title,
+    contexts,
+    onclick,
     ...moreOptions
   });
 }

@@ -1,9 +1,9 @@
 import { getStoredState, persistStore } from 'redux-persist';
 import storage from 'chrome-storage-local';
 
-export default function(configure, callback) {
+export default function (configure, callback) {
   const persistConfig = {
-    storage: storage,
+    storage,
     skipRestore: true,
     serialize: data => data,
     deserialize: data => data,

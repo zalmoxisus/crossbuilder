@@ -5,7 +5,7 @@ export function doBefore(done, action, load, port = 9515, browser = 'chrome') {
     .usingServer(`http://localhost:${port}`)
     .withCapabilities({
       chromeOptions: {
-        args: [ `load-extension=${load}` ]
+        args: [`load-extension=${load}`]
       }
     })
     .forBrowser(browser)

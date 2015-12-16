@@ -38,7 +38,7 @@ gulp.task('webpack-dev-server', () => {
     if (err) throw new gutil.PluginError('webpack', err);
   }), {
     publicPath: myConfig.output.publicPath,
-    stats: {colors: true},
+    stats: { colors: true },
     noInfo: true,
     hot: true,
     historyApiFallback: true
@@ -127,7 +127,7 @@ gulp.task('copy:build:app', () => {
 
 gulp.task('copy:build:firefox', ['build:extension'], () => {
   gulp.src('./build/extension/**').pipe(gulp.dest('./build/firefox'))
-    .on('finish', function() {
+    .on('finish', function () {
       gulp.src('./src/browser/firefox/manifest.json')
         .pipe(gulp.dest('./build/firefox'));
     });

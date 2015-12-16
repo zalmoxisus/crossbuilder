@@ -22,7 +22,7 @@ export default baseConfig({
     loader: 'babel',
     exclude: /node_modules/,
     query: {
-      presets: [ 'es2015', 'stage-0', 'react' ],
+      presets: ['es2015', 'stage-0', 'react'],
       plugins: [
         'add-module-exports',
         'transform-decorators-legacy',
@@ -31,16 +31,16 @@ export default baseConfig({
           {
             transforms: [{
               transform: 'react-transform-hmr',
-              imports: [ 'react' ],
-              locals: [ 'module' ]
+              imports: ['react'],
+              locals: ['module']
             }, {
               transform: 'react-transform-catch-errors',
-              imports: [ 'react', 'redbox-react' ]
+              imports: ['react', 'redbox-react']
             }]
           }
         ]
       ]
     }
   }],
-  entry: entry
+  entry
 });

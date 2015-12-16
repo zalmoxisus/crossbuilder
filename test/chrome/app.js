@@ -7,10 +7,10 @@ import { appName, appTitle } from '../config';
 
 let appHandle;
 
-describe('Chrome app window', function() {
+describe('Chrome app window', function () {
   this.timeout(15000);
 
-  before(function(done) {
+  before(function (done) {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
         const launchLink = this.driver.findElement(webdriver.By.className('launch-link'));
@@ -36,7 +36,7 @@ describe('Chrome app window', function() {
 
   after(doAfter);
 
-  it('should switch to app\'s handle', function(done) {
+  it('should switch to app\'s handle', function (done) {
     expect(appHandle).toExist();
 
     this.driver.switchTo().window(appHandle).then(() => {

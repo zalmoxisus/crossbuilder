@@ -1,7 +1,7 @@
 import { connect } from 'crossmessaging';
 import { receiveNotification } from '../actions/extension';
 
-export default function(configure, callback) {
+export default function (configure, callback) {
   let store;
   const connection = connect(true);
 

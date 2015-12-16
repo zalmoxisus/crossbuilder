@@ -4,7 +4,7 @@ import Counter from '../components/Counter';
 import * as counterActions from '../actions/counter';
 
 function mapStateToProps(state) {
-  return { state: state };
+  return { state };
 }
 
 const mapDispatchToProps = counterActions; // { ...counterActions, ...};

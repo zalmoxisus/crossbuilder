@@ -9,15 +9,15 @@ describe('reducers', () => {
     });
 
     it('should handle INCREMENT_COUNTER', () => {
-      expect(counter({count: 1}, { type: INCREMENT_COUNTER })).toEqual({ count: 2 });
+      expect(counter({ count: 1 }, { type: INCREMENT_COUNTER })).toEqual({ count: 2 });
     });
 
     it('should handle DECREMENT_COUNTER', () => {
-      expect(counter({count: 1}, { type: DECREMENT_COUNTER })).toEqual({ count: 0 });
+      expect(counter({ count: 1 }, { type: DECREMENT_COUNTER })).toEqual({ count: 0 });
     });
 
     it('should handle unknown action type', () => {
-      expect(counter({count: 1}, { type: 'unknown' })).toEqual({ count: 1 });
+      expect(counter({ count: 1 }, { type: 'unknown' })).toEqual({ count: 1 });
     });
   });
 });

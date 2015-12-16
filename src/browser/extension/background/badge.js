@@ -1,5 +1,5 @@
 function setBadge(value) {
-  chrome.browserAction.setBadgeText({text: '' + value});
+  chrome.browserAction.setBadgeText({ text: '' + value });
 }
 
 function initBadge(initValue) {

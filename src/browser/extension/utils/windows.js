@@ -3,7 +3,7 @@ let windows = {};
 function focusIfExist(name, callback) {
   if (!windows[name]) callback();
   else {
-    chrome.windows.update(windows[name], {focused: true}, () => {
+    chrome.windows.update(windows[name], { focused: true }, () => {
       if (chrome.runtime.lastError) callback();
     });
   }

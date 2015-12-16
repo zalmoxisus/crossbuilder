@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 import notifyEvents from '../events/notifyEvents';
 
 export default function configureStore(callback, isBg) {
-  const getState = ( isBg ? require('./getStateToBg') : require('./getStateFromBg'));
+  const getState = (isBg ? require('./getStateToBg') : require('./getStateFromBg'));
 
   getState(initialState => {
     let finalCreateStore;
@@ -17,7 +17,7 @@ export default function configureStore(callback, isBg) {
     if (process.env.NODE_ENV !== 'production') {
       middleware.push(
         require('redux-immutable-state-invariant')(),
-        require('redux-logger')({level: 'info', collapsed: true})
+        require('redux-logger')({ level: 'info', collapsed: true })
       );
       finalCreateStore = compose(
         applyMiddleware(...middleware),
