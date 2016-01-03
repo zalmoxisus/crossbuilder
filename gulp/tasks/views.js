@@ -1,26 +1,14 @@
 import gulp from 'gulp';
 import jade from 'gulp-jade';
 
-gulp.task('views:dev', () => {
+const compile = (dest, env = 'prod') => () => {
   gulp.src('./src/browser/views/*.jade')
     .pipe(jade({
-      locals: { env: 'dev' }
+      locals: { env }
     }))
-    .pipe(gulp.dest('./dev'));
-});
+    .pipe(gulp.dest(dest));
+};
 
-gulp.task('views:build:extension', () => {
-  gulp.src('./src/browser/views/*.jade')
-    .pipe(jade({
-      locals: { env: 'prod' }
-    }))
-    .pipe(gulp.dest('./build/extension'));
-});
-
-gulp.task('views:build:app', () => {
-  gulp.src('./src/browser/views/*.jade')
-    .pipe(jade({
-      locals: { env: 'prod' }
-    }))
-    .pipe(gulp.dest('./build/app'));
-});
+gulp.task('views:dev', compile('./dev', 'dev'));
+gulp.task('views:build:extension', compile('./build/extension'));
+gulp.task('views:build:app', compile('./build/app'));

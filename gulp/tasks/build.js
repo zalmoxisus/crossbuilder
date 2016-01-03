@@ -4,8 +4,8 @@ import webpack from 'webpack';
 import prodConfig from '../../webpack/prod.config';
 import appConfig from '../../webpack/app.config';
 
-gulp.task('webpack:build:extension', (callback) => {
-  let myConfig = Object.create(prodConfig);
+const build = (config, callback) => {
+  let myConfig = Object.create(config);
   webpack(myConfig, (err, stats) => {
     if (err) {
       throw new gutil.PluginError('webpack:build', err);
@@ -13,15 +13,11 @@ gulp.task('webpack:build:extension', (callback) => {
     gutil.log('[webpack:build]', stats.toString({ colors: true }));
     callback();
   });
-});
+};
 
+gulp.task('webpack:build:extension', (callback) => {
+  build(prodConfig, callback);
+});
 gulp.task('webpack:build:app', (callback) => {
-  let myConfig = Object.create(appConfig);
-  webpack(myConfig, (err, stats) => {
-    if (err) {
-      throw new gutil.PluginError('webpack:build', err);
-    }
-    gutil.log('[webpack:build]', stats.toString({ colors: true }));
-    callback();
-  });
+  build(appConfig, callback);
 });

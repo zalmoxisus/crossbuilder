@@ -1,26 +1,18 @@
 import gulp from 'gulp';
 import rename from 'gulp-rename';
 
-gulp.task('copy:dev', () => {
-  gulp.src('./src/browser/extension/manifest.dev.json')
-    .pipe(rename('manifest.json'))
-    .pipe(gulp.dest('./dev'));
-  gulp.src('./src/assets/**/*').pipe(gulp.dest('./dev'));
-});
+const copy = (dest, manifest) => () => {
+  if (manifest) {
+    gulp.src(`./src/browser/${manifest}`)
+      .pipe(rename('manifest.json'))
+      .pipe(gulp.dest(dest));
+  }
+  gulp.src('./src/assets/**/*').pipe(gulp.dest(dest));
+};
 
-gulp.task('copy:build:extension', () => {
-  gulp.src('./src/browser/extension/manifest.prod.json')
-    .pipe(rename('manifest.json'))
-    .pipe(gulp.dest('./build/extension'));
-  gulp.src('./src/assets/**/*').pipe(gulp.dest('./build/extension'));
-});
-
-gulp.task('copy:build:app', () => {
-  gulp.src('./src/browser/chromeApp/manifest.json')
-    .pipe(rename('manifest.json'))
-    .pipe(gulp.dest('./build/app'));
-  gulp.src('./src/assets/**/*').pipe(gulp.dest('./build/app'));
-});
+gulp.task('copy:dev', copy('./dev', 'extension/manifest.dev.json'));
+gulp.task('copy:build:extension', copy('./build/extension', 'extension/manifest.prod.json'));
+gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
 
 gulp.task('copy:build:firefox', ['build:extension'], () => {
   gulp.src('./build/extension/**').pipe(gulp.dest('./build/firefox'))
