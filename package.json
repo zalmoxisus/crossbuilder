@@ -74,6 +74,7 @@
     "redbox-react": "^1.2.0",
     "redux-immutable-state-invariant": "^1.2.0",
     "redux-logger": "^2.2.1",
+    "require-dir": "^0.3.0",
     "selenium-webdriver": "^2.48.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
