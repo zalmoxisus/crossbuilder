@@ -7,8 +7,10 @@ const packagerOptions = {
   dir: path.resolve(__dirname, '../../build/electron'),
   out: path.resolve(__dirname, '../../build/executables'),
   name: config.productName,
-  platform: 'all',
+  all: true,
+  /* platform: 'darwin',
   arch: 'all',
+  icon: path.resolve(__dirname, '../../src/electron/resources/osx/icon.icns'), */
   version: config.electronVersion,
   'app-version': config.version
 };

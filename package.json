@@ -4,8 +4,8 @@
   "description": "Building Chrome apps and cross-browser extensions with Redux and Webpack.",
   "scripts": {
     "start": "gulp",
-    "start:electron": "gulp build:electron && electron ./build/electron/",
-    "build:electron": "gulp build:electron && gulp pack:electron",
+    "start:electron": "rm -rf ./build/electron/ && gulp build:electron && electron ./build/electron/",
+    "build:electron": "rm -rf ./build/electron/ && rm -rf ./build/executables/ && gulp build:electron && gulp pack:electron",
     "build:web": "gulp build:web",
     "build:extension": "gulp build:extension",
     "build:app": "gulp build:app",

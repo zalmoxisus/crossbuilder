@@ -16,7 +16,7 @@ gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
 gulp.task('copy:build:web', copy('./build/web'));
 
 gulp.task('copy:build:electron', () => {
-  gulp.src('./src/electron/**').pipe(gulp.dest('./build/electron'));
+  gulp.src(['./src/electron/**', '!./src/electron/resources/**']).pipe(gulp.dest('./build/electron'));
   copy('./build/electron')();
 });
 
