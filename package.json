@@ -4,6 +4,7 @@
   "description": "Building Chrome apps and cross-browser extensions with Redux and Webpack.",
   "scripts": {
     "start": "gulp",
+    "build:web": "gulp build:web",
     "build:extension": "gulp build:extension",
     "build:app": "gulp build:app",
     "build:firefox": "gulp build:firefox",

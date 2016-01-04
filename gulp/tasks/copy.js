@@ -13,6 +13,7 @@ const copy = (dest, manifest) => () => {
 gulp.task('copy:dev', copy('./dev', 'extension/manifest.dev.json'));
 gulp.task('copy:build:extension', copy('./build/extension', 'extension/manifest.prod.json'));
 gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
+gulp.task('copy:build:web', copy('./build/web'));
 
 gulp.task('copy:build:firefox', ['build:extension'], () => {
   gulp.src('./build/extension/**').pipe(gulp.dest('./build/firefox'))

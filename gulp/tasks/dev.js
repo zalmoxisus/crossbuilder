@@ -10,6 +10,7 @@ gulp.task('webpack-dev-server', () => {
   new WebpackDevServer(webpack(myConfig, (err, stats) => {
     if (err) throw new gutil.PluginError('webpack', err);
   }), {
+    contentBase: './dev',
     publicPath: myConfig.output.publicPath,
     stats: { colors: true },
     noInfo: true,
