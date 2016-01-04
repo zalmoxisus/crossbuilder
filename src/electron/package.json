@@ -1,6 +1,6 @@
 {
   "name": "browser-redux",
-  "productName": "Browser Redux",
+  "productName": "BrowserRedux",
   "version": "0.0.1",
   "electronVersion": "0.36.2",
   "main": "index.js",
