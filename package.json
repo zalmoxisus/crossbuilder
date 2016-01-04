@@ -4,6 +4,8 @@
   "description": "Building Chrome apps and cross-browser extensions with Redux and Webpack.",
   "scripts": {
     "start": "gulp",
+    "start:electron": "gulp build:electron && electron ./build/electron/",
+    "build:electron": "gulp build:electron && gulp pack:electron",
     "build:web": "gulp build:web",
     "build:extension": "gulp build:extension",
     "build:app": "gulp build:app",
@@ -16,6 +18,9 @@
     "test:app": "gulp test-app",
     "test:chrome": "npm run build:app && npm run build:extension && gulp test-chrome",
     "test": "npm run test:app && npm run test:chrome"
+  },
+  "bin": {
+    "electron": "./node_modules/.bin/electron"
   },
   "repository": {
     "type": "git",
@@ -56,6 +61,9 @@
     "babel-preset-stage-0": "^6.3.13",
     "chromedriver": "^2.20.0",
     "co-mocha": "^1.1.2",
+    "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
     "enzyme": "^1.2.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
@@ -79,7 +87,8 @@
     "selenium-webdriver": "^2.48.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.0",
+    "webpack-target-electron-renderer": "^0.3.0"
   },
   "dependencies": {
     "chrome-storage-local": "^0.1.1",

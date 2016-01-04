@@ -13,4 +13,5 @@ const compile = (dest, p = 0, env = 'prod') => () => {
 gulp.task('views:dev', compile('./dev', 'all', 'dev'));
 gulp.task('views:build:extension', compile('./build/extension'));
 gulp.task('views:build:app', compile('./build/app'));
+gulp.task('views:build:electron', compile('./build/electron', 1));
 gulp.task('views:build:web', compile('./build/web', 1));

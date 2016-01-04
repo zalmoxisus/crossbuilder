@@ -1,0 +1,9 @@
+{
+  "name": "browser-redux",
+  "productName": "Browser Redux",
+  "version": "0.0.1",
+  "electronVersion": "0.36.2",
+  "main": "index.js",
+  "description": "Electron Template",
+  "authors": "zalmoxisus"
+}

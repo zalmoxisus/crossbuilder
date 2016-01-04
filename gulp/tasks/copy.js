@@ -15,6 +15,11 @@ gulp.task('copy:build:extension', copy('./build/extension', 'extension/manifest.
 gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
 gulp.task('copy:build:web', copy('./build/web'));
 
+gulp.task('copy:build:electron', () => {
+  gulp.src('./src/electron/**').pipe(gulp.dest('./build/electron'));
+  copy('./build/electron')();
+});
+
 gulp.task('copy:build:firefox', ['build:extension'], () => {
   gulp.src('./build/extension/**').pipe(gulp.dest('./build/firefox'))
     .on('finish', function () {
