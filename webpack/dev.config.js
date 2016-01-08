@@ -9,7 +9,7 @@ const entry = [
 ];
 const srcPath = path.join(__dirname, '../src/browser/');
 
-export default baseConfig({
+const config = baseConfig({
   input: {
     background: [`${srcPath}extension/background/index`, ...entry],
     window: [`${srcPath}window/index`, ...entry],
@@ -52,3 +52,7 @@ export default baseConfig({
   }],
   entry
 });
+
+config.devtool = 'eval';
+
+export default config;
