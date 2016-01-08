@@ -1,8 +1,7 @@
 import path from 'path';
-import webpackTargetElectronRenderer from 'webpack-target-electron-renderer';
 import baseConfig from './base.config';
 
-const config = baseConfig({
+export default baseConfig({
   input: {
     app: [path.join(__dirname, '../src/web/index')]
   },
@@ -15,7 +14,3 @@ const config = baseConfig({
     }
   }
 });
-
-config.target = webpackTargetElectronRenderer(config);
-
-export default config;

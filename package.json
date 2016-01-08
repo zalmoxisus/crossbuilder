@@ -90,8 +90,7 @@
     "selenium-webdriver": "^2.48.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-target-electron-renderer": "^0.3.0"
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "chrome-storage-local": "^0.1.1",
