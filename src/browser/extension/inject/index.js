@@ -21,4 +21,4 @@ configureStore(store => {
     );
   });
 
-});
+}, false);

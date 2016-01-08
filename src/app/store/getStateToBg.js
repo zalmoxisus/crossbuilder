@@ -1,5 +1,5 @@
 import { onConnect } from 'crossmessaging';
-import getState from './getStoredState';
+import getState from './getStoredState'; // If you do not want to persist states, use './getDefaultState'
 import { receiveNotification } from '../actions/extension';
 
 export default function (configure, callback) {
