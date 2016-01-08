@@ -1,7 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Root from 'app/containers/Root';
+import configureStore from '../app/store/configureStore';
 
-render(
-  <div>Hi!</div>,
-  document.getElementById('root')
-);
+configureStore(store => {
+  render(
+    <Root store={store} />,
+    document.getElementById('root')
+  );
+});
