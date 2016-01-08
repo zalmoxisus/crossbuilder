@@ -11,12 +11,14 @@ const copy = (dest, manifest) => () => {
 };
 
 gulp.task('copy:dev', copy('./dev', 'browser/extension/manifest.dev.json'));
-gulp.task('copy:build:extension', copy('./build/extension', 'browser/extension/manifest.prod.json'));
+gulp.task('copy:build:extension',
+  copy('./build/extension', 'browser/extension/manifest.prod.json'));
 gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
 gulp.task('copy:build:web', copy('./build/web'));
 
 gulp.task('copy:build:electron', () => {
-  gulp.src(['./src/electron/**', '!./src/electron/resources', '!./src/electron/resources/**']).pipe(gulp.dest('./build/electron'));
+  gulp.src(['./src/electron/**', '!./src/electron/resources', '!./src/electron/resources/**'])
+    .pipe(gulp.dest('./build/electron'));
   copy('./build/electron')();
 });
 

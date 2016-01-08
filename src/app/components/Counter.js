@@ -10,7 +10,7 @@ const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, state }
     <div className="rule"></div>
     <button className="btn" onClick={incrementIfOdd}>Increment if odd</button>
     <br />
-    <button className="btn" onClick={() => incrementAsync()}>Increment async</button>
+    <button className="btn" onClick={incrementAsync}>Increment async</button>
   </div>
 );
 

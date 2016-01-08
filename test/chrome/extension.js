@@ -14,7 +14,8 @@ describe('Chrome extension', function () {
     doBefore.call(this, done, () => {
       return this.driver.get('chrome://extensions-frame').then(() => {
         this.driver.findElements(webdriver.By.xpath(
-          '//div[contains(@class,"extension-list-item-wrapper") and .//h2[contains(text(), "' + extensionName + '")]]'
+          '//div[contains(@class,"extension-list-item-wrapper") and ' +
+          './/h2[contains(text(), "' + extensionName + '")]]'
         )).then(elems =>
           elems[0].getAttribute('id')
         ).then(id => {

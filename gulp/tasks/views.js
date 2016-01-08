@@ -4,7 +4,6 @@ import jade from 'gulp-jade';
 const paths = ['./src/browser/views/*.jade', './src/views/*.jade'];
 
 const compile = (dest, path, env = 'prod') => () => {
-  const paths = ['./src/browser/views/*.jade', './src/views/*.jade'];
   gulp.src(path)
     .pipe(jade({
       locals: { env }

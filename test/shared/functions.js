@@ -11,7 +11,7 @@ export function doBefore(done, action, load, port = 9515, browser = 'chrome') {
     .forBrowser(browser)
     .build();
   action().then(() => {
-    setTimeout(done, 1000);
+    setTimeout(done, 3000);
   });
 }
 

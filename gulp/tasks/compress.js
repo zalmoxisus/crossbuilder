@@ -26,7 +26,9 @@ gulp.task('compress:electron:osx', () => {
     console.warn('paths', paths);
     const builder = electronBuilder.init();
     builder.build({
-      appPath: path.resolve(`./build/executables/${config.productName}-darwin-x64/${config.productName}.app`),
+      appPath: path.resolve(
+        `./build/executables/${config.productName}-darwin-x64/${config.productName}.app`
+      ),
       platform: 'osx',
       out: path.resolve('./build'),
       config: './src/electron/resources/config.json'

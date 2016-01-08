@@ -33,7 +33,8 @@ export function hasClickedButton(className, idx, newValue, timeout) {
   it('should click button with idx=' + idx, function (done) {
     this.driver.findElement(
         webdriver.By.xpath(
-          '//div[' + (className ? '@class="' + className + '" and ' : '') + './/span[text()="Clicked: "] and .//span[text()=" times"]]//button[' + idx + ']'
+          '//div[' + (className ? '@class="' + className + '" and ' : '') +
+          './/span[text()="Clicked: "] and .//span[text()=" times"]]//button[' + idx + ']'
         ))
       .click().then(() => done());
   });
