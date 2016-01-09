@@ -2,45 +2,29 @@
 
 [![Build Status](https://travis-ci.org/zalmoxisus/browser-redux.svg)](https://travis-ci.org/zalmoxisus/browser-redux)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/browser-redux) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/browser-redux/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/browser-redux) [![Dependency Status](https://david-dm.org/zalmoxisus/browser-redux.svg)](https://david-dm.org/zalmoxisus/browser-redux) [![devDependency Status](https://david-dm.org/zalmoxisus/browser-redux/dev-status.svg)](https://david-dm.org/zalmoxisus/browser-redux#info=devDependencies)
 
-Simple boilerplate and library for building Chrome apps and cross-browser extensions (support for Firefox and Safari will come later) that use Redux actions instead of messaging.
+Simple boilerplate and library for building Electron and Chrome apps, and cross-browser extensions that use Redux actions for messaging.
 
 ![Demo](demo.gif)
 
 Redux states are synced between background, inject page, app window, extension popup and badge.
 
-The developing is the same as for the web apps with React and Redux, just use the `src/app` boilerplate. If you need some extension or Chrome app customizations, use `src/browser/` boilerplates.
-
-The app example is edited from [Redux Counter example](https://github.com/rackt/redux/tree/master/examples/counter) using [Redux Persist](https://github.com/rt2zz/redux-persist), based on [React Chrome Extension Boilerplate](https://github.com/jhen0409/react-chrome-extension-boilerplate).
+The developing is the same as for the web apps with React and Redux, just use the `src/app` boilerplate.
 
 ## Structure
 
-- `src/app`: React cross-browser application.
-- `src/browser`: sources for the extension and Chrome app.
-- `test/app`: tests for Redux actions and reducers, and for React components (using [Legit Tests](https://github.com/Legitcode/tests)).
+- `src/app`: React cross-browser application (will be imported in the apps bellow).
+- `src/web`: web app sources.
+- `src/browser`: extensions sources.
+- `src/chromeApp`: Chrome app sources
+- `src/electron`: Electron app sources
+- `test/app`: tests for Redux actions and reducers, and for React components (using [enzyme](http://airbnb.io/enzyme/)).
 - `test/chrome`: tests for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver)).
 
-## Included
-- *Boilerplate specific dependencies*
+## Boilerplate specific dependencies
  - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
  - [redux-notify](https://github.com/zalmoxisus/redux-notify)
  - [crossmessaging](https://github.com/zalmoxisus/crossmessaging)
  - [chrome-storage-local](https://github.com/zalmoxisus/chrome-storage-local)
-
-- *App*
- - [react](https://github.com/facebook/react)
- - [redux](https://github.com/rackt/redux)
- - [react-redux](https://github.com/gaearon/react-redux)
- - [redux-persist](https://github.com/rt2zz/redux-persist)
-
-- *Dev*
- - [babel](https://github.com/babel/babel)
- - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
- - [gulp](https://github.com/gulpjs/gulp)
- - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
- - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
- - [redux-logger](https://github.com/fcomb/redux-logger)
- - [redbox-react](https://github.com/KeywordBrain/redbox-react)
- - [webpack](https://github.com/webpack/webpack)
 
 ## Installation
 
@@ -59,31 +43,49 @@ npm install
 npm run dev
 ```
 
-You can load unpacked extensions with `./dev`.
+- Open web app in browser at `localhost:3000`.
+- [Load unpacked extension's `./dev` folder to Chrome.](https://developer.chrome.com/extensions/getstarted#unpacked)
 
 #### React/Flux hot reload
 
-This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window. If the inject page is on https (like `https://github.com`), click the 'shield' icon on the Chrome address bar to allow loading `http://localhost` there (after making any changes in dev mode), so hot reload can work for that page.
+This boilerplate uses `Webpack` and `react-transform`. You can hot reload by editing related files of `./src/app`. If the inject page for the extension is on https (like `https://github.com`), click the 'shield' icon on the Chrome address bar to allow loading `http://localhost` there (after making any changes in dev mode), so hot reload can work for that page.
 
 #### Debug with Redux DevTools
 
 We use [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension), install it from [Chrome store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for debugging.
 
-## Build extension
+## Build web app
 
 ```bash
-# build files to './build/extension'
-npm run build:extension
+# build files to './build/web'
+npm run build:web
 ```
 
-## Build app
+## Build Electron app
+
+```bash
+# build files to './build/electron'
+npm run build:electron
+
+# or to start it
+npm run start:electron
+```
+
+## Build Chrome app
 
 ```bash
 # build files to './build/app'
 npm run build:app
 ```
 
-## Build firefox extension
+## Build Chrome extension
+
+```bash
+# build files to './build/extension'
+npm run build:extension
+```
+
+## Build Firefox extension
 
 ```bash
 # build files to './build/firefox'
@@ -91,16 +93,19 @@ npm run build:firefox
 ````
 Note that it's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file.
 
-## Build & Compress ZIP file
+## Build & Compress
 
 ```bash
-# compress extension's build folder to extension.zip
-npm run compress:extension
+# build and compress Electron app to [name].dmg, win32-ia32.zip, win32-x64.zip, linux-ia32.zip, linux-x64.zip
+npm run compress:electron
 
-# compress app's build folder to app.zip
+# compress Chrome app to app.zip
 npm run compress:app
 
-# compress firefox extension's build folder to firefox.xpi
+# compress Chrome extension to extension.zip
+npm run compress:extension
+
+# compress Firefox extension to firefox.xpi
 npm run compress:firefox
 ```
 
@@ -134,6 +139,8 @@ npm test
 
 ## Roadmap
 
+- [x] Web app
+- [x] Electron app
 - [x] Chrome app
 - [x] Chrome extension
 - [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/browser-redux/issues/12))
