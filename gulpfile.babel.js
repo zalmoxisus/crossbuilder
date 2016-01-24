@@ -4,6 +4,7 @@ requireDir('./gulp/tasks');
 
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build:web', ['webpack:build:web', 'views:build:web', 'copy:build:web']);
+gulp.task('build:cordova', ['webpack:build:cordova', 'views:build:cordova', 'copy:build:cordova']);
 gulp.task('build:electron',
   ['webpack:build:electron', 'views:build:electron', 'copy:build:electron']);
 gulp.task('build:extension',

@@ -15,6 +15,7 @@ gulp.task('copy:build:extension',
   copy('./build/extension', 'browser/extension/manifest.prod.json'));
 gulp.task('copy:build:app', copy('./build/app', 'chromeApp/manifest.json'));
 gulp.task('copy:build:web', copy('./build/web'));
+gulp.task('copy:build:cordova', copy('./www'));
 
 gulp.task('copy:build:electron', () => {
   gulp.src(['./src/electron/**', '!./src/electron/resources', '!./src/electron/resources/**'])

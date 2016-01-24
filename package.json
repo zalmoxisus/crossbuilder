@@ -7,6 +7,7 @@
     "start:electron": "rm -rf ./build/electron/ && gulp build:electron && electron ./build/electron/",
     "build:electron": "rm -rf ./build/electron/ && rm -rf ./build/executables/ && gulp build:electron && gulp pack:electron",
     "build:web": "gulp build:web",
+    "build:cordova": "gulp build:cordova",
     "build:extension": "gulp build:extension",
     "build:app": "gulp build:app",
     "build:firefox": "gulp build:firefox",

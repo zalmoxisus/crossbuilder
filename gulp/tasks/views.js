@@ -19,3 +19,4 @@ gulp.task('views:build:app', () => {
 });
 gulp.task('views:build:electron', compile('./build/electron', paths[1]));
 gulp.task('views:build:web', compile('./build/web', paths[1]));
+gulp.task('views:build:cordova', compile('./www', paths[1]));
