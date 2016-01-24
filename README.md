@@ -1,6 +1,6 @@
 # CrossBuilder
 
-[![Build Status](https://travis-ci.org/zalmoxisus/browser-redux.svg)](https://travis-ci.org/zalmoxisus/browser-redux)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/browser-redux) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/browser-redux/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/browser-redux) [![Dependency Status](https://david-dm.org/zalmoxisus/browser-redux.svg)](https://david-dm.org/zalmoxisus/browser-redux) [![devDependency Status](https://david-dm.org/zalmoxisus/browser-redux/dev-status.svg)](https://david-dm.org/zalmoxisus/browser-redux#info=devDependencies)
+[![Build Status](https://travis-ci.org/zalmoxisus/crossbuilder.svg)](https://travis-ci.org/zalmoxisus/crossbuilder)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/crossbuilder) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/crossbuilder/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/crossbuilder) [![Dependency Status](https://david-dm.org/zalmoxisus/crossbuilder.svg)](https://david-dm.org/zalmoxisus/crossbuilder) [![devDependency Status](https://david-dm.org/zalmoxisus/crossbuilder/dev-status.svg)](https://david-dm.org/zalmoxisus/crossbuilder#info=devDependencies)
 
 Building web, Electron and Chrome apps, and cross-browser extensions that use Redux actions for messaging.
 
@@ -93,6 +93,12 @@ npm run build:firefox
 ````
 Note that it's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file.
 
+## Build & Run Cordova app
+
+1. Install global tools: `npm install -g cordova`.
+2. Add your cordova platform by running `cordova platform add %PLATFORM%` (where `%PLATFORM%` is the platform you deploy for: android and more).
+3. Use `cordova run android` or `cordova build android` to run or build the app (it will execute `npm run build:cordova` automatically [as a hook](https://github.com/zalmoxisus/crossbuilder/blob/master/hooks/build.sh)).
+
 ## Build & Compress
 
 ```bash
@@ -143,7 +149,7 @@ npm test
 - [x] Electron app
 - [x] Chrome app
 - [x] Chrome extension
-- [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/browser-redux/issues/12))
+- [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/crossbuilder/issues/12))
 - [ ] Safari extension (based on [Chrome to Safari port](https://code.google.com/p/adblockforchrome/source/browse/trunk/port.js))
 
 ## LICENSE
