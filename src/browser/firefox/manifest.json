@@ -5,7 +5,7 @@
   "description": "Redux counter example",
   "applications": {
     "gecko": {
-      "id": "browser-redux@test.com"
+      "id": "crossbuilder@test.com"
     }
   },
   "browser_action": {

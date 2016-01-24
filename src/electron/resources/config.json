@@ -1,6 +1,6 @@
 {
   "osx" : {
-    "title": "BrowserRedux",
+    "title": "CrossBuilder",
     "background": "osx/installer.png",
     "icon": "osx/icon.icns",
     "icon-size": 225,
@@ -10,7 +10,7 @@
     ]
   },
   "win" : {
-    "title" : "BrowserRedux",
+    "title" : "CrossBuilder",
     "version" : "0.0.0.1",
     "icon" : "windows/icon.ico"
   }

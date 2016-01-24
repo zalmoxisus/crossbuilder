@@ -12,7 +12,7 @@ configureStore(store => {
     injectDiv.style.width = '210px';
     injectDiv.style.border = '1px solid #ccc';
     injectDiv.style.textAlign = 'center';
-    injectDiv.className = 'browser-redux';
+    injectDiv.className = 'crossbuilder';
     document.body.appendChild(injectDiv);
 
     render(

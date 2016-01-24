@@ -1,12 +1,12 @@
-# Browser App and Extension Boilerplate using Redux Actions
+# CrossBuilder
 
 [![Build Status](https://travis-ci.org/zalmoxisus/browser-redux.svg)](https://travis-ci.org/zalmoxisus/browser-redux)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/browser-redux) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/browser-redux/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/browser-redux) [![Dependency Status](https://david-dm.org/zalmoxisus/browser-redux.svg)](https://david-dm.org/zalmoxisus/browser-redux) [![devDependency Status](https://david-dm.org/zalmoxisus/browser-redux/dev-status.svg)](https://david-dm.org/zalmoxisus/browser-redux#info=devDependencies)
 
-Simple boilerplate and library for building Electron and Chrome apps, and cross-browser extensions that use Redux actions for messaging.
+Building web, Electron and Chrome apps, and cross-browser extensions that use Redux actions for messaging.
 
 ![Demo](demo.gif)
 
-Redux states are synced between background, inject page, app window, extension popup and badge.
+Redux states are synced between background, injected page, app window, extension popup and badge.
 
 The developing is the same as for the web apps with React and Redux, just use the `src/app` boilerplate.
 
@@ -20,7 +20,7 @@ The developing is the same as for the web apps with React and Redux, just use th
 - `test/app`: tests for Redux actions and reducers, and for React components (using [enzyme](http://airbnb.io/enzyme/)).
 - `test/chrome`: tests for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver)).
 
-## Boilerplate specific dependencies
+## CrossBuilder included libraries
  - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
  - [redux-notify](https://github.com/zalmoxisus/redux-notify)
  - [crossmessaging](https://github.com/zalmoxisus/crossmessaging)
