@@ -4,8 +4,6 @@
 
 Building web, Electron and Chrome apps, and cross-browser extensions that use Redux actions for messaging.
 
-![Demo](demo.gif)
-
 Redux states are synced between background, injected page, app window, extension popup and badge.
 
 The developing is the same as for the web apps with React and Redux, just use the `src/app` boilerplate.
