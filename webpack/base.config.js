@@ -17,7 +17,7 @@ const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders, entry 
   },
   plugins: [
     new webpack.DefinePlugin(globals),
-    ...(plugins ? plugins :
+    ...(plugins ||
       [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
@@ -37,7 +37,7 @@ const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders, entry 
   },
   module: {
     loaders: [
-      ...(loaders ? loaders : [{
+      ...(loaders || [{
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/
