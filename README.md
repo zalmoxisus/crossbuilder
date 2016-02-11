@@ -89,7 +89,8 @@ npm run build:extension
 # build files to './build/firefox'
 npm run build:firefox
 ````
-Note that it's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file.
+Note that you should use Firefox Nightly or Developer Edition to support WebExtensions. It's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file or use Firefox Developer Edition which can load local directories. Make sure yo follow [prerequisites](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Prerequisites) and [installing instruction](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Packaging_and_installation#Installing_Your_Extension).
+
 
 ## Build & Run Cordova app
 
