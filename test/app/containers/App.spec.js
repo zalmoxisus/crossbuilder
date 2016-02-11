@@ -1,6 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import { describeWithDOM, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -13,7 +13,7 @@ function configureStore(initialState) {
   return createStoreWithMiddleware(combineReducers({ counter }), initialState);
 }
 
-describeWithDOM('containers', () => {
+describe('containers', () => {
 
   describe('App', () => {
     it('should display initial count', () => {

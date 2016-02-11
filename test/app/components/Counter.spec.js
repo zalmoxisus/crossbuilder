@@ -1,6 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import { describeWithDOM, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Counter from '../../../src/app/components/Counter';
 
 const props = {
@@ -11,7 +11,7 @@ const props = {
   incrementAsync: expect.createSpy()
 };
 
-describeWithDOM('Counter component', () => {
+describe('Counter component', () => {
   it('should display count', () => {
     const wrapper = mount(<Counter {...props} />);
     expect(wrapper.find('span.counter').text()).toBe('1');
