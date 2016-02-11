@@ -10,7 +10,7 @@ export default function configureStore(callback, isBg) {
   else getState = (isBg ? require('./getStateToBg') : require('./getStateFromBg'));
 
   getState(initialState => {
-    let finalCreateStore;
+    let enhancer;
     const middleware = [
       thunk,
       notify(notifyEvents, { noReverse: true })
@@ -21,15 +21,15 @@ export default function configureStore(callback, isBg) {
         require('redux-immutable-state-invariant')(),
         require('redux-logger')({ level: 'info', collapsed: true })
       );
-      finalCreateStore = compose(
+      enhancer = compose(
         applyMiddleware(...middleware),
         window.devToolsExtension ? window.devToolsExtension() : f => f
-      )(createStore);
+      );
     } else {
-      finalCreateStore = applyMiddleware(...middleware)(createStore);
+      enhancer = applyMiddleware(...middleware);
     }
 
-    const store = finalCreateStore(rootReducer, initialState);
+    const store = createStore(rootReducer, initialState, enhancer);
 
     if (process.env.NODE_ENV !== 'production') {
       if (module.hot) {
