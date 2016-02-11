@@ -38,7 +38,7 @@ npm install
 # build files to './dev'
 # watch files change
 # start WebpackDevServer
-npm run dev
+npm start
 ```
 
 - Open web app in browser at `localhost:3000`.
