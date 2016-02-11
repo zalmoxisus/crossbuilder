@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import mocha from 'gulp-mocha';
 import crdv from 'chromedriver';
 
 gulp.task('chrome:test', () => {
