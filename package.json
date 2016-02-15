@@ -1,6 +1,6 @@
 {
   "name": "crossbuilder",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.",
   "scripts": {
     "start": "gulp",
