@@ -104,7 +104,7 @@
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-notify": "^0.1.1",
-    "redux-persist": "^1.5.3",
+    "redux-persist": "^2.0.0-rc2",
     "redux-thunk": "^1.0.3"
   }
 }
