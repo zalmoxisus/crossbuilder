@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import Counter from '../components/Counter';
-import * as counterActions from '../actions/counter';
+import Alternative from '../components/Alternatives';
+import * as alternativesActions from '../actions/offers';
 
 function mapStateToProps(state) {
   return { state };
 }
 
-const mapDispatchToProps = counterActions; // { ...counterActions, ...};
+const mapDispatchToProps = alternativesActions; // { ...counterActions, ...};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(Alternative);

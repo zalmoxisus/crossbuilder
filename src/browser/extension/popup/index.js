@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from 'app/containers/Root';
+import PopupRoot from 'app/containers/PopUp/Root';
 
 chrome.runtime.getBackgroundPage(background => {
   render(
-    <Root store={background.store} />,
+    <PopupRoot store={background.store} />,
     document.getElementById('root')
   );
 });

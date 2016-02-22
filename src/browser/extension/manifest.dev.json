@@ -16,6 +16,22 @@
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 ws://localhost:3000 ws://localhost:35729; style-src * 'unsafe-inline'; img-src 'self' data:;"
+  "permissions": [
+    "contextMenus",
+    "privacy",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 ws://localhost:3000 ws://localhost:35729; style-src * 'unsafe-inline'; img-src 'self' data:;",
+  "web_accessible_resources": [
+    "img/*",
+    "styles/*",
+    "fonts/*"
+  ]
 }
