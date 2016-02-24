@@ -13,7 +13,7 @@ function handleClose(id) {
   const name = Object.keys(windows).filter(key => windows[key] === id);
   if (name) {
     delete windows[name];
-    chrome.windows.onRemoved.removeListener(handleClose);
+    if (!Object.keys(windows).length) chrome.windows.onRemoved.removeListener(handleClose);
   }
 }
 
