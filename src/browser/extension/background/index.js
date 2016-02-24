@@ -5,6 +5,8 @@ import initBadge from './badge';
 configureStore(store => {
   window.store = store;
 
+
+  // Support background function for creating safe store
   let unsubscribesList = {};
   window.makeStore = function(tabId) {
     const storeSubscribe = store.subscribe;
