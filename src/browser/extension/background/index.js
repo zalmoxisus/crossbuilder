@@ -8,9 +8,9 @@ configureStore(store => {
 
   // Support background function for creating safe store
   let unsubscribesList = {};
-  window.makeStore = function(tabId) {
+  window.makeStore = (tabId) => {
     const storeSubscribe = store.subscribe;
-    return {...store,
+    return { ...store,
       subscribe(...args) {
         const unsubscribe = storeSubscribe(...args);
         unsubscribesList[tabId] = unsubscribe;
