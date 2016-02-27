@@ -4,13 +4,14 @@ import App from './App';
 
 export default class Root extends Component {
   static propTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
+    tabId: PropTypes.number.isRequired,
   };
 
   render() {
-    const { store } = this.props;
+    const { store, tabId } = this.props;
     return (
-      <Provider store={store}>
+      <Provider store={store} tabId={tabId}>
         <App />
       </Provider>
     );
