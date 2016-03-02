@@ -7,6 +7,7 @@ configureStore(store => {
 
 
   // Support background function for creating safe store
+  // whenever the tabs is close the listener on that tab would be removed.
   let unsubscribesList = {};
   window.makeStore = (tabId) => {
     const storeSubscribe = store.subscribe;
@@ -19,19 +20,23 @@ configureStore(store => {
     };
   };
 
-  chrome.tabs.onRemoved.addListener((tabId) => {
-    if (unsubscribesList[tabId]) {
-      unsubscribesList[tabId]();
-      delete unsubscribesList[tabId];
-    }
-  });
+  if (!chrome.tabs.onRemoved.hasListeners()) {
+    chrome.tabs.onRemoved.addListener((tabId) => {
+      if (unsubscribesList[tabId]) {
+        unsubscribesList[tabId]();
+        delete unsubscribesList[tabId];
+      }
+    });
+  }
 
-  chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
-    if (unsubscribesList[tabId] && changeInfo.status === 'loading') {
-      unsubscribesList[tabId]();
-      delete unsubscribesList[tabId];
-    }
-  });
+  if (!chrome.tabs.onUpdated.hasListeners()) {
+    chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+      if (unsubscribesList[tabId] && changeInfo.status === 'loading') {
+        unsubscribesList[tabId]();
+        delete unsubscribesList[tabId];
+      }
+    });
+  }
 
   createMenu();
   initBadge(store.getState().counter.count);
