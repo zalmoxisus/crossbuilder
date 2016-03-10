@@ -29,7 +29,8 @@
     "prefer-arrow-callback": 0,
     "arrow-body-style": 0,
     "indent": [2, 2, {"SwitchCase": 1}],
-    "new-cap": [2, { "capIsNewExceptions": ["Test"] }]
+    "new-cap": [2, { "capIsNewExceptions": ["Test"] }],
+    "strict": 0
   },
   "plugins": [
     "react"
