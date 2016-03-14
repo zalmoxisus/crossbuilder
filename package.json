@@ -70,7 +70,7 @@
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.37.2",
     "enzyme": "^2.1.0",
-    "eslint": "^2.2.0",
+    "eslint": "2.2.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.2.1",
     "expect": "^1.15.2",
