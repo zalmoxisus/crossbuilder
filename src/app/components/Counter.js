@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, state }) => (
   <div>
@@ -35,6 +35,7 @@ class Counter extends Component {
     );
   }
 }
+*/
 
 Counter.propTypes = {
   increment: PropTypes.func.isRequired,
@@ -43,6 +44,5 @@ Counter.propTypes = {
   decrement: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired
 };
-*/
 
 export default Counter;

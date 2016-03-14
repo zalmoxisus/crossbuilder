@@ -18,15 +18,15 @@ const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders, entry 
   plugins: [
     new webpack.DefinePlugin(globals),
     ...(plugins ||
-      [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          comments: false,
-          compressor: {
-            warnings: false
-          }
-        })
-      ])
+    [
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        comments: false,
+        compressor: {
+          warnings: false
+        }
+      })
+    ])
   ],
   resolve: {
     alias: {
