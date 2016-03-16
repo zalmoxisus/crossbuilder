@@ -3,7 +3,7 @@ import baseConfig from './base.config';
 
 export default baseConfig({
   input: {
-    app: [path.join(__dirname, '../src/web/index')]
+    app: [path.join(__dirname, '../src/app/')]
   },
   output: {
     path: path.join(__dirname, '../www')

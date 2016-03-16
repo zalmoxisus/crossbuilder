@@ -1,15 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 
-const srcPath = path.join(__dirname, '../src/browser/');
-
-const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders, entry = [] }) => ({
-  entry: input || {
-    background: [`${srcPath}extension/background/index`, ...entry],
-    window: [`${srcPath}window/index`, ...entry],
-    popup: [`${srcPath}extension/popup/index`, ...entry],
-    inject: [`${srcPath}extension/inject/index`, ...entry]
-  },
+const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders }) => ({
+  entry: input,
   output: {
     filename: 'js/[name].bundle.js',
     chunkFilename: 'js/[id].chunk.js',

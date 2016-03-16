@@ -11,11 +11,11 @@ const srcPath = path.join(__dirname, '../src/browser/');
 
 const config = baseConfig({
   input: {
-    background: [`${srcPath}extension/background/index`, ...entry],
-    window: [`${srcPath}window/index`, ...entry],
-    popup: [`${srcPath}extension/popup/index`, ...entry],
-    inject: [`${srcPath}extension/inject/index`, ...entry],
-    app: [path.join(__dirname, '../src/web/index'), ...entry]
+    background: [`${srcPath}extension/background/`, ...entry],
+    window: [`${srcPath}window/`, ...entry],
+    popup: [`${srcPath}extension/popup/`, ...entry],
+    inject: [`${srcPath}extension/inject/`, ...entry],
+    app: [path.join(__dirname, '../src/app/'), ...entry]
   },
   output: {
     path: path.join(__dirname, '../dev'),
@@ -49,8 +49,7 @@ const config = baseConfig({
         ]
       ]
     }
-  }],
-  entry
+  }]
 });
 
 config.devtool = 'eval';
