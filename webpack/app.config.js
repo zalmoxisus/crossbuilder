@@ -7,7 +7,7 @@ export default baseConfig({
     app: [path.join(__dirname, '../src/web/index')]
   },
   output: {
-    path: path.join(__dirname, '../build/app/js')
+    path: path.join(__dirname, '../build/app')
   },
   globals: {
     'process.env': {

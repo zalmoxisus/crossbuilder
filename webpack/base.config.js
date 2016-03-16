@@ -11,8 +11,8 @@ const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders, entry 
     inject: [`${srcPath}extension/inject/index`, ...entry]
   },
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js',
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[id].chunk.js',
     ...output
   },
   plugins: [

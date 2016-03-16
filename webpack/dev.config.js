@@ -18,8 +18,8 @@ const config = baseConfig({
     app: [path.join(__dirname, '../src/web/index'), ...entry]
   },
   output: {
-    path: path.join(__dirname, '../dev/js'),
-    publicPath: `http://localhost:${port}/js/`
+    path: path.join(__dirname, '../dev'),
+    publicPath: `http://localhost:${port}/`
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
