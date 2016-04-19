@@ -73,7 +73,7 @@
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "^4.3.0",
     "expect": "^1.15.2",
     "gulp": "^3.9.1",
     "gulp-jade": "1.1.0",
