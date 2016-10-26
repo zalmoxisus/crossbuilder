@@ -16,7 +16,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
       // Include Redux DevTools extension
       const httpRequest = new XMLHttpRequest();
-      httpRequest.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');
+      httpRequest.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/redux-devtools-extension.js');
       httpRequest.send();
       httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
