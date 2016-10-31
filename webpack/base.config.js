@@ -15,9 +15,13 @@ const baseConfig = ({ input, output = {}, globals = {}, plugins, loaders }) => (
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
-        compressor: {
+        compress: {
           warnings: false
-        }
+        },
+         output: {
+                    ascii_only: true,
+                    beautify: false,
+            }
       })
     ])
   ],
